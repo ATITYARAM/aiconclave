@@ -1,9 +1,9 @@
 ---
 const tracks = [
-  { id: 'workshop-golang', title: 'Workshop 1', detail: 'GoLang Framework', meta: '13 Mar · 1:30–4:30 PM' },
-  { id: 'workshop-genai', title: 'Workshop 2', detail: 'GenAI in Action', meta: '14 Mar · 9:30 AM–12:30 PM' },
+  { id: 'golang', title: 'GoLang Framework', detail: 'Workshop 1', meta: '13 Mar · 1:30–4:30 PM' },
+  { id: 'genai', title: 'GenAI in Action', detail: 'Workshop 2', meta: '14 Mar · 9:30 AM–12:30 PM' },
   { id: 'hackathon', title: '24 hrs Hackathon', detail: 'Given problem statements', meta: '13–14 Mar · 1:00 PM–1:00 PM' },
-  { id: 'pitch', title: 'Pitch your Idea', detail: 'Early-stage startups & students · TRL 4+', meta: '13 Mar · 11:00 AM–1:30 PM' }
+  { id: 'pitch', title: 'Pitch Your Idea', detail: 'Early-stage startups & students · TRL 4+', meta: '13 Mar · 11:00 AM–1:30 PM' }
 ];
 ---
 
@@ -12,165 +12,111 @@ const tracks = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Conclave 1.0 · Registration</title>
-    <meta name="description" content="AI Conclave 1.0 registration — Kongu Engineering College" />
+    <title>AI Conclave 1.0 · Shape the Next Reality</title>
+    <meta name="description" content="AI Conclave 1.0 at Kongu Engineering College — workshops, hackathon and startup pitch." />
   </head>
   <body>
-    <main class="shell">
+    <main>
       <section class="hero">
-        <div class="eyebrow">AI CONCLAVE 1.0</div>
-        <h1>Shape the next reality.</h1>
-        <p class="intro">Register for AI Conclave 1.0 at Kongu Engineering College and tell us how you want to participate.</p>
-        <div class="event-meta">
-          <span>13–14 Mar 2025</span>
-          <span>Maharaja Auditorium, KEC</span>
+        <div class="hero-inner">
+          <div class="topline"><span>AI CONCLAVE 1.0</span><span>13–14 MAR 2025 · KEC</span></div>
+          <div class="hero-copy">
+            <p class="kicker">KONGU ENGINEERING COLLEGE</p>
+            <h1>Shape the<br /><em>next reality.</em></h1>
+            <p class="intro">Two days of artificial intelligence, innovation and entrepreneurship — bringing together students, builders, researchers and founders at Maharaja Auditorium, KEC.</p>
+          </div>
+          <div class="signals">
+            <div><strong>04</strong><span>Experiences</span></div><div><strong>24H</strong><span>Hackathon</span></div><div><strong>02</strong><span>Workshops</span></div><div><strong>01</strong><span>Pitch Arena</span></div>
+          </div>
         </div>
       </section>
 
-      <section class="card">
-        <div class="card-head">
-          <div>
-            <p class="step">01 · PARTICIPANT</p>
-            <h2>Tell us about you</h2>
-          </div>
-          <span class="required">* Required</span>
+      <section class="program">
+        <div class="section-label">THE PROGRAM</div>
+        <div class="program-list">
+          {tracks.map((track, index) => (
+            <article class="program-row"><span class="number">0{index + 1}</span><div><small>{track.detail}</small><h2>{track.title}</h2></div><span class="program-meta">{track.meta}</span></article>
+          ))}
         </div>
-
-        <form id="registration-form">
-          <div class="grid two">
-            <label>
-              Full name <span>*</span>
-              <input name="name" type="text" placeholder="Your full name" required />
-            </label>
-            <label>
-              Email address <span>*</span>
-              <input name="email" type="email" placeholder="you@example.com" required />
-            </label>
-          </div>
-
-          <div class="grid two">
-            <label>
-              Mobile number <span>*</span>
-              <input name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
-            </label>
-            <label>
-              Institution / Organisation <span>*</span>
-              <input name="institution" type="text" placeholder="College, startup or organisation" required />
-            </label>
-          </div>
-
-          <div class="grid two">
-            <label>
-              I am a <span>*</span>
-              <select name="role" required>
-                <option value="">Select one</option>
-                <option>Student</option>
-                <option>Faculty / Researcher</option>
-                <option>Startup / Founder</option>
-                <option>Industry Professional</option>
-                <option>Other</option>
-              </select>
-            </label>
-            <label>
-              City
-              <input name="city" type="text" placeholder="Your city" />
-            </label>
-          </div>
-
-          <div class="section-line">
-            <p class="step">02 · PARTICIPATION</p>
-            <h2>What are you joining?</h2>
-            <p class="hint">Select all that apply. Final eligibility and team selection can be handled by the organisers.</p>
-          </div>
-
-          <div class="tracks">
-            {tracks.map((track) => (
-              <label class="track">
-                <input type="checkbox" name="tracks" value={track.id} />
-                <span class="check"></span>
-                <span class="track-copy">
-                  <strong>{track.title}</strong>
-                  <span>{track.detail}</span>
-                  <small>{track.meta}</small>
-                </span>
-              </label>
-            ))}
-          </div>
-
-          <div class="section-line">
-            <p class="step">03 · CONSENT</p>
-          </div>
-
-          <label class="consent">
-            <input type="checkbox" name="consent" required />
-            <span>I confirm that the information provided is accurate and agree to be contacted by the AI Conclave organisers regarding registration and event participation. <b>*</b></span>
-          </label>
-
-          <button type="submit">Continue registration <span>→</span></button>
-          <p id="status" class="status" aria-live="polite"></p>
-        </form>
+        <p class="source-note">Organised by Dept. of AI in association with Innovation &amp; Entrepreneurship Forum (IEF).</p>
       </section>
 
-      <footer>
-        <span>Organised by Dept. of AI in association with Innovation & Entrepreneurship Forum (IEF)</span>
-        <span>Kongu Engineering College</span>
-      </footer>
+      <section class="closing"><p>MAHARAJA AUDITORIUM · KONGU ENGINEERING COLLEGE</p><h2>Be in the room<br />where ideas move.</h2></section>
     </main>
 
+    <div class="registration-bar"><div class="bar-copy"><span>AI CONCLAVE 1.0</span><strong>Registration is your first step.</strong></div><button id="open-registration" class="register-button">Register &amp; Pay <span>↗</span></button></div>
+
+    <div id="registration-modal" class="modal" aria-hidden="true">
+      <div class="modal-backdrop" data-close></div>
+      <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="registration-title">
+        <button class="close" type="button" aria-label="Close registration" data-close>×</button>
+        <div class="modal-header"><p class="kicker">REGISTRATION · 01 / 02</p><h2 id="registration-title">Reserve your place.</h2><p>Enter your details and choose what you want to attend. Payment is the final confirmation step.</p></div>
+        <form id="registration-form">
+          <div class="fields">
+            <label>Full name *<input name="name" required autocomplete="name" placeholder="Your full name" /></label>
+            <label>Email *<input name="email" type="email" required autocomplete="email" placeholder="you@example.com" /></label>
+            <label>Mobile *<input name="phone" type="tel" required autocomplete="tel" placeholder="+91 XXXXX XXXXX" /></label>
+            <label>Institution / Organisation *<input name="institution" required placeholder="College, startup or organisation" /></label>
+            <label>I am a *<select name="role" required><option value="">Select one</option><option>Student</option><option>Faculty / Researcher</option><option>Startup / Founder</option><option>Industry Professional</option><option>Other</option></select></label>
+            <label>City<input name="city" placeholder="Your city" /></label>
+          </div>
+          <div class="choose"><div><p class="kicker">PARTICIPATION</p><h3>Select your experiences</h3></div><div class="track-grid">
+            {tracks.map((track) => <label class="track-option"><input type="checkbox" name="tracks" value={track.id} /><span class="box"></span><span><b>{track.title}</b><small>{track.meta}</small></span></label>)}
+          </div></div>
+          <label class="consent"><input type="checkbox" required /> <span>I confirm the information is accurate and agree to be contacted by the organisers.</span></label>
+          <div class="payment-preview"><div class="payment-icon">₹</div><div><b>Secure payment</b><span>Your registration will be confirmed after successful payment.</span></div><strong>→</strong></div>
+          <button class="continue" type="submit">Continue to payment <span>→</span></button><p id="status" class="status" aria-live="polite"></p>
+        </form>
+        <p class="payment-note">Payment gateway integration is prepared for the next step. No payment is collected by this static page until the organiser's live payment gateway/link is configured.</p>
+      </section>
+    </div>
+
     <script>
+      const modal = document.querySelector('#registration-modal');
+      const openButton = document.querySelector('#open-registration');
       const form = document.querySelector('#registration-form');
       const status = document.querySelector('#status');
-      form?.addEventListener('submit', (event) => {
-        event.preventDefault();
-        status.textContent = 'Registration form is ready. Next step: connect this form to Supabase to save registrations.';
-      });
+      const closeModal = () => { modal?.setAttribute('aria-hidden', 'true'); document.body.classList.remove('locked'); };
+      openButton?.addEventListener('click', () => { modal?.setAttribute('aria-hidden', 'false'); document.body.classList.add('locked'); setTimeout(() => modal?.querySelector('input')?.focus(), 50); });
+      modal?.querySelectorAll('[data-close]').forEach((el) => el.addEventListener('click', closeModal));
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeModal(); });
+      form?.addEventListener('submit', (event) => { event.preventDefault(); status.textContent = 'Payment gateway is the next connection. The form is ready for Supabase + the organiser payment link.'; });
     </script>
   </body>
 </html>
 
 <style>
   :global(*) { box-sizing: border-box; }
-  :global(body) { margin: 0; background: #07090d; color: #f4f5f7; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-  :global(body::before) { content: ''; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% -10%, rgba(170, 30, 30, .18), transparent 40%); }
-  .shell { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 54px 0 28px; }
-  .hero { padding: 20px 4px 38px; }
-  .eyebrow, .step { color: #d58b8b; font-size: 12px; font-weight: 800; letter-spacing: .18em; }
-  h1 { max-width: 760px; margin: 10px 0 14px; font-size: clamp(42px, 7vw, 76px); line-height: .98; letter-spacing: -.055em; }
-  .intro { max-width: 660px; color: #a7acb6; font-size: 17px; line-height: 1.65; }
-  .event-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-  .event-meta span { border: 1px solid #252a33; background: #0d1016; padding: 9px 13px; border-radius: 999px; color: #d4d7dc; font-size: 13px; }
-  .card { border: 1px solid #252a33; border-radius: 20px; background: rgba(13,16,22,.94); box-shadow: 0 24px 80px rgba(0,0,0,.32); overflow: hidden; }
-  .card-head { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; padding: 30px 32px; border-bottom: 1px solid #252a33; }
-  .card-head h2, .section-line h2 { margin: 6px 0 0; font-size: 25px; letter-spacing: -.025em; }
-  .required { color: #858b96; font-size: 12px; }
-  form { padding: 30px 32px 34px; }
-  .grid { display: grid; gap: 18px; margin-bottom: 18px; }
-  .two { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  label { display: flex; flex-direction: column; gap: 8px; color: #dfe2e7; font-size: 13px; font-weight: 650; }
-  label > span:first-child, label > b { color: #d58b8b; }
-  input, select { width: 100%; border: 1px solid #2a2f39; border-radius: 11px; background: #080b10; color: #f3f4f6; padding: 13px 14px; outline: none; font: inherit; }
-  input::placeholder { color: #626873; }
-  input:focus, select:focus { border-color: #a94747; box-shadow: 0 0 0 3px rgba(169,71,71,.12); }
-  .section-line { border-top: 1px solid #252a33; margin: 30px 0 20px; padding-top: 27px; }
-  .hint { margin: 7px 0 0; color: #777e89; font-size: 13px; line-height: 1.5; }
-  .tracks { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
-  .track { position: relative; flex-direction: row; align-items: flex-start; gap: 13px; padding: 17px; border: 1px solid #282d36; border-radius: 13px; background: #0a0d12; cursor: pointer; transition: border-color .2s, background .2s; }
-  .track:hover { border-color: #454b56; background: #0d1016; }
-  .track input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-  .check { width: 19px; height: 19px; flex: 0 0 19px; margin-top: 1px; border: 1px solid #414752; border-radius: 5px; }
-  .track:has(input:checked) { border-color: #9d4545; background: #150e10; }
-  .track:has(input:checked) .check { border-color: #b75b5b; background: #9d4545; box-shadow: inset 0 0 0 4px #150e10; }
-  .track-copy { display: flex; gap: 4px; }
-  .track-copy strong { color: #f3f4f6; }
-  .track-copy span, .track-copy small { color: #9298a3; font-weight: 450; }
-  .track-copy small { margin-top: 3px; font-size: 11px; }
-  .consent { flex-direction: row; align-items: flex-start; margin: 22px 0 24px; color: #9298a3; font-weight: 450; line-height: 1.5; }
-  .consent input { width: 18px; height: 18px; flex: 0 0 18px; margin-top: 1px; accent-color: #9d4545; }
-  .consent b { color: #d58b8b; }
-  button { border: 0; border-radius: 11px; padding: 14px 18px; background: #b34f4f; color: white; font: inherit; font-weight: 750; cursor: pointer; }
-  button:hover { background: #c05a5a; }
-  button span { margin-left: 12px; }
-  .status { min-height: 20px; margin: 14px 0 0; color: #b8bdc6; font-size: 13px; }
-  footer { display: flex; justify-content: space-between; gap: 20px; padding: 25px 4px 0; color: #5f6570; font-size: 11px; line-height: 1.5; }
-  @media (max-width: 720px) { .shell { width: min(100% - 22px, 1080px); padding-top: 28px; } .two, .tracks { grid-template-columns: 1fr; } .card-head, form { padding-left: 20px; padding-right: 20px; } footer { flex-direction: column; } }
+  :global(html) { scroll-behavior: smooth; }
+  :global(body) { margin: 0; background: #07080a; color: #f4f1ed; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  :global(body.locked) { overflow: hidden; }
+  :global(button), :global(input), :global(select) { font: inherit; }
+  .hero { min-height: 86vh; border-bottom: 1px solid #252525; background: radial-gradient(circle at 72% 22%, rgba(157,42,42,.20), transparent 30%), linear-gradient(145deg,#090a0c,#101114 65%,#090a0c); }
+  .hero-inner { width: min(1180px,calc(100% - 44px)); min-height: 86vh; margin: auto; padding: 30px 0 54px; display: flex; flex-direction: column; }
+  .topline { display: flex; justify-content: space-between; border-bottom: 1px solid #2a2a2a; padding-bottom: 17px; color: #85827e; font-size: 10px; font-weight: 800; letter-spacing: .2em; }
+  .hero-copy { margin: auto 0; padding: 70px 0 80px; }
+  .kicker,.section-label { margin: 0; color: #b75b5b; font-size: 10px; font-weight: 850; letter-spacing: .2em; }
+  h1 { margin: 16px 0 24px; font-size: clamp(64px,11vw,150px); line-height: .82; letter-spacing: -.075em; font-weight: 780; }
+  h1 em { color: #b64e4e; font-family: Georgia,serif; font-weight: 400; }
+  .intro { max-width: 600px; margin: 0; color: #a09d99; font-size: clamp(15px,1.6vw,19px); line-height: 1.65; }
+  .signals { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid #2a2a2a; padding-top: 18px; }
+  .signals div { display: flex; flex-direction: column; gap: 4px; border-left: 1px solid #2a2a2a; padding-left: 18px; }.signals div:first-child { border-left: 0; padding-left: 0; }
+  .signals strong { font-size: 22px; letter-spacing: -.03em; }.signals span { color: #77746f; font-size: 10px; text-transform: uppercase; letter-spacing: .12em; }
+  .program { width: min(1180px,calc(100% - 44px)); margin: auto; padding: 110px 0 120px; }.program-list { margin-top: 30px; border-top: 1px solid #292929; }
+  .program-row { display: grid; grid-template-columns: 70px 1fr auto; gap: 20px; align-items: center; padding: 28px 0; border-bottom: 1px solid #292929; }.number { color: #6e6b67; font-size: 11px; }
+  .program-row small { color: #797671; font-size: 10px; text-transform: uppercase; letter-spacing: .12em; }.program-row h2 { margin: 7px 0 0; font-size: clamp(23px,3vw,38px); letter-spacing: -.045em; }.program-meta { color: #77736e; font-size: 11px; text-align: right; }
+  .source-note { margin-top: 22px; color: #5f5c58; font-size: 11px; }.closing { min-height: 55vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-top: 1px solid #252525; padding: 80px 22px 170px; }
+  .closing p { color: #706d68; font-size: 10px; letter-spacing: .18em; }.closing h2 { margin: 20px 0 0; font-size: clamp(48px,8vw,100px); line-height: .9; letter-spacing: -.065em; }
+  .registration-bar { position: fixed; z-index: 20; left: 50%; bottom: 18px; transform: translateX(-50%); width: min(1050px,calc(100% - 28px)); padding: 12px 13px 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border: 1px solid #3a3a3a; border-radius: 15px; background: rgba(16,17,20,.92); backdrop-filter: blur(18px); box-shadow: 0 18px 70px rgba(0,0,0,.55); }
+  .bar-copy { display: flex; flex-direction: column; gap: 3px; }.bar-copy span { color: #9a4949; font-size: 9px; font-weight: 850; letter-spacing: .18em; }.bar-copy strong { font-size: 13px; }
+  .register-button,.continue { border: 0; border-radius: 9px; background: #b04d4d; color: #fff; padding: 14px 19px; font-weight: 800; cursor: pointer; }.register-button:hover,.continue:hover { background: #c15a5a; }.register-button span,.continue span { margin-left: 14px; }
+  .modal { position: fixed; z-index: 40; inset: 0; display: none; }.modal[aria-hidden="false"] { display: block; }.modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.76); backdrop-filter: blur(9px); }
+  .modal-panel { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: min(760px,calc(100% - 28px)); max-height: calc(100vh - 34px); overflow: auto; border: 1px solid #303136; border-radius: 18px; background: #101114; box-shadow: 0 30px 100px rgba(0,0,0,.65); padding: 32px; }
+  .close { position: absolute; top: 16px; right: 17px; border: 0; background: transparent; color: #87888c; font-size: 28px; cursor: pointer; }.modal-header { padding-right: 35px; padding-bottom: 25px; border-bottom: 1px solid #292a2e; }.modal-header h2 { margin: 10px 0 8px; font-size: clamp(34px,5vw,52px); letter-spacing: -.06em; }.modal-header p:last-child { max-width: 560px; margin: 0; color: #8e9096; font-size: 13px; line-height: 1.6; }
+  form { padding-top: 25px; }.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }label { color: #bdbec2; font-size: 11px; font-weight: 700; }input,select { display: block; width: 100%; margin-top: 7px; border: 1px solid #303238; border-radius: 9px; outline: none; background: #08090b; color: #f2f2f3; padding: 12px 13px; }input::placeholder { color: #555860; }input:focus,select:focus { border-color: #a54c4c; }
+  .choose { margin-top: 27px; padding-top: 25px; border-top: 1px solid #292a2e; }.choose h3 { margin: 7px 0 15px; font-size: 17px; }.track-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }.track-option { display: flex; align-items: flex-start; gap: 10px; padding: 12px; border: 1px solid #2b2d32; border-radius: 9px; cursor: pointer; }.track-option:has(input:checked) { border-color: #8e4141; background: #160e0f; }.track-option input { display: none; }
+  .box { width: 16px; height: 16px; flex: 0 0 16px; border: 1px solid #494c53; border-radius: 4px; margin-top: 1px; }.track-option:has(input:checked) .box { background: #a94b4b; box-shadow: inset 0 0 0 3px #160e0f; border-color: #a94b4b; }.track-option b,.track-option small { display: block; }.track-option b { color: #e4e5e7; font-size: 11px; }.track-option small { margin-top: 4px; color: #73767e; font-size: 9px; font-weight: 500; }
+  .consent { display: flex; gap: 9px; margin: 20px 0; color: #777a82; font-weight: 500; line-height: 1.5; }.consent input { display: block; width: 16px; height: 16px; flex: 0 0 16px; margin: 1px 0 0; accent-color: #a94b4b; }.payment-preview { display: flex; align-items: center; gap: 12px; border: 1px solid #292c31; border-radius: 10px; padding: 13px; margin-bottom: 12px; }.payment-icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: #1d1112; color: #ca6a6a; font-weight: 850; }.payment-preview div:nth-child(2) { display: flex; flex-direction: column; gap: 3px; flex: 1; }.payment-preview b { font-size: 11px; }.payment-preview span { color: #6f737b; font-size: 10px; }.payment-preview > strong { color: #777a80; }
+  .continue { width: 100%; }.status { min-height: 18px; margin: 12px 0 0; color: #a6a8ae; font-size: 11px; }.payment-note { margin: 17px 0 0; color: #5e6168; font-size: 9px; line-height: 1.55; text-align: center; }
+  @media (max-width: 700px) { .hero-inner,.program { width: min(100% - 28px,1180px); }.topline span:last-child { display: none; }.hero-copy { padding: 70px 0; }.signals { grid-template-columns: 1fr 1fr; gap: 18px 0; }.signals div:nth-child(3) { border-left: 0; padding-left: 0; }.program-row { grid-template-columns: 35px 1fr; gap: 10px; }.program-meta { grid-column: 2; text-align: left; }.registration-bar { bottom: 10px; }.bar-copy strong { font-size: 11px; }.register-button { padding: 12px 14px; font-size: 11px; }.modal-panel { padding: 24px 18px; }.fields,.track-grid { grid-template-columns: 1fr; } }
 </style>

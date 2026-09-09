@@ -1,0 +1,176 @@
+---
+const tracks = [
+  { id: 'workshop-golang', title: 'Workshop 1', detail: 'GoLang Framework', meta: '13 Mar · 1:30–4:30 PM' },
+  { id: 'workshop-genai', title: 'Workshop 2', detail: 'GenAI in Action', meta: '14 Mar · 9:30 AM–12:30 PM' },
+  { id: 'hackathon', title: '24 hrs Hackathon', detail: 'Given problem statements', meta: '13–14 Mar · 1:00 PM–1:00 PM' },
+  { id: 'pitch', title: 'Pitch your Idea', detail: 'Early-stage startups & students · TRL 4+', meta: '13 Mar · 11:00 AM–1:30 PM' }
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Conclave 1.0 · Registration</title>
+    <meta name="description" content="AI Conclave 1.0 registration — Kongu Engineering College" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="eyebrow">AI CONCLAVE 1.0</div>
+        <h1>Shape the next reality.</h1>
+        <p class="intro">Register for AI Conclave 1.0 at Kongu Engineering College and tell us how you want to participate.</p>
+        <div class="event-meta">
+          <span>13–14 Mar 2025</span>
+          <span>Maharaja Auditorium, KEC</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <div>
+            <p class="step">01 · PARTICIPANT</p>
+            <h2>Tell us about you</h2>
+          </div>
+          <span class="required">* Required</span>
+        </div>
+
+        <form id="registration-form">
+          <div class="grid two">
+            <label>
+              Full name <span>*</span>
+              <input name="name" type="text" placeholder="Your full name" required />
+            </label>
+            <label>
+              Email address <span>*</span>
+              <input name="email" type="email" placeholder="you@example.com" required />
+            </label>
+          </div>
+
+          <div class="grid two">
+            <label>
+              Mobile number <span>*</span>
+              <input name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
+            </label>
+            <label>
+              Institution / Organisation <span>*</span>
+              <input name="institution" type="text" placeholder="College, startup or organisation" required />
+            </label>
+          </div>
+
+          <div class="grid two">
+            <label>
+              I am a <span>*</span>
+              <select name="role" required>
+                <option value="">Select one</option>
+                <option>Student</option>
+                <option>Faculty / Researcher</option>
+                <option>Startup / Founder</option>
+                <option>Industry Professional</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label>
+              City
+              <input name="city" type="text" placeholder="Your city" />
+            </label>
+          </div>
+
+          <div class="section-line">
+            <p class="step">02 · PARTICIPATION</p>
+            <h2>What are you joining?</h2>
+            <p class="hint">Select all that apply. Final eligibility and team selection can be handled by the organisers.</p>
+          </div>
+
+          <div class="tracks">
+            {tracks.map((track) => (
+              <label class="track">
+                <input type="checkbox" name="tracks" value={track.id} />
+                <span class="check"></span>
+                <span class="track-copy">
+                  <strong>{track.title}</strong>
+                  <span>{track.detail}</span>
+                  <small>{track.meta}</small>
+                </span>
+              </label>
+            ))}
+          </div>
+
+          <div class="section-line">
+            <p class="step">03 · CONSENT</p>
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" name="consent" required />
+            <span>I confirm that the information provided is accurate and agree to be contacted by the AI Conclave organisers regarding registration and event participation. <b>*</b></span>
+          </label>
+
+          <button type="submit">Continue registration <span>→</span></button>
+          <p id="status" class="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <footer>
+        <span>Organised by Dept. of AI in association with Innovation & Entrepreneurship Forum (IEF)</span>
+        <span>Kongu Engineering College</span>
+      </footer>
+    </main>
+
+    <script>
+      const form = document.querySelector('#registration-form');
+      const status = document.querySelector('#status');
+      form?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        status.textContent = 'Registration form is ready. Next step: connect this form to Supabase to save registrations.';
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(body) { margin: 0; background: #07090d; color: #f4f5f7; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  :global(body::before) { content: ''; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% -10%, rgba(170, 30, 30, .18), transparent 40%); }
+  .shell { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 54px 0 28px; }
+  .hero { padding: 20px 4px 38px; }
+  .eyebrow, .step { color: #d58b8b; font-size: 12px; font-weight: 800; letter-spacing: .18em; }
+  h1 { max-width: 760px; margin: 10px 0 14px; font-size: clamp(42px, 7vw, 76px); line-height: .98; letter-spacing: -.055em; }
+  .intro { max-width: 660px; color: #a7acb6; font-size: 17px; line-height: 1.65; }
+  .event-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .event-meta span { border: 1px solid #252a33; background: #0d1016; padding: 9px 13px; border-radius: 999px; color: #d4d7dc; font-size: 13px; }
+  .card { border: 1px solid #252a33; border-radius: 20px; background: rgba(13,16,22,.94); box-shadow: 0 24px 80px rgba(0,0,0,.32); overflow: hidden; }
+  .card-head { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; padding: 30px 32px; border-bottom: 1px solid #252a33; }
+  .card-head h2, .section-line h2 { margin: 6px 0 0; font-size: 25px; letter-spacing: -.025em; }
+  .required { color: #858b96; font-size: 12px; }
+  form { padding: 30px 32px 34px; }
+  .grid { display: grid; gap: 18px; margin-bottom: 18px; }
+  .two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  label { display: flex; flex-direction: column; gap: 8px; color: #dfe2e7; font-size: 13px; font-weight: 650; }
+  label > span:first-child, label > b { color: #d58b8b; }
+  input, select { width: 100%; border: 1px solid #2a2f39; border-radius: 11px; background: #080b10; color: #f3f4f6; padding: 13px 14px; outline: none; font: inherit; }
+  input::placeholder { color: #626873; }
+  input:focus, select:focus { border-color: #a94747; box-shadow: 0 0 0 3px rgba(169,71,71,.12); }
+  .section-line { border-top: 1px solid #252a33; margin: 30px 0 20px; padding-top: 27px; }
+  .hint { margin: 7px 0 0; color: #777e89; font-size: 13px; line-height: 1.5; }
+  .tracks { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+  .track { position: relative; flex-direction: row; align-items: flex-start; gap: 13px; padding: 17px; border: 1px solid #282d36; border-radius: 13px; background: #0a0d12; cursor: pointer; transition: border-color .2s, background .2s; }
+  .track:hover { border-color: #454b56; background: #0d1016; }
+  .track input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .check { width: 19px; height: 19px; flex: 0 0 19px; margin-top: 1px; border: 1px solid #414752; border-radius: 5px; }
+  .track:has(input:checked) { border-color: #9d4545; background: #150e10; }
+  .track:has(input:checked) .check { border-color: #b75b5b; background: #9d4545; box-shadow: inset 0 0 0 4px #150e10; }
+  .track-copy { display: flex; gap: 4px; }
+  .track-copy strong { color: #f3f4f6; }
+  .track-copy span, .track-copy small { color: #9298a3; font-weight: 450; }
+  .track-copy small { margin-top: 3px; font-size: 11px; }
+  .consent { flex-direction: row; align-items: flex-start; margin: 22px 0 24px; color: #9298a3; font-weight: 450; line-height: 1.5; }
+  .consent input { width: 18px; height: 18px; flex: 0 0 18px; margin-top: 1px; accent-color: #9d4545; }
+  .consent b { color: #d58b8b; }
+  button { border: 0; border-radius: 11px; padding: 14px 18px; background: #b34f4f; color: white; font: inherit; font-weight: 750; cursor: pointer; }
+  button:hover { background: #c05a5a; }
+  button span { margin-left: 12px; }
+  .status { min-height: 20px; margin: 14px 0 0; color: #b8bdc6; font-size: 13px; }
+  footer { display: flex; justify-content: space-between; gap: 20px; padding: 25px 4px 0; color: #5f6570; font-size: 11px; line-height: 1.5; }
+  @media (max-width: 720px) { .shell { width: min(100% - 22px, 1080px); padding-top: 28px; } .two, .tracks { grid-template-columns: 1fr; } .card-head, form { padding-left: 20px; padding-right: 20px; } footer { flex-direction: column; } }
+</style>

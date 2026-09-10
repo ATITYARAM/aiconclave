@@ -2,8 +2,26 @@
 import ConclavePage from '../layouts/ConclavePage.astro';
 
 const workshops = [
-  ['01', 'GPU Computing & CUDA', '05 Feb · Friday · 2:15–4:15 PM'],
-  ['02', 'Generative AI & LLMs on HPC', '06 Feb · Saturday · 9:00 AM–12:30 PM']
+  {
+    number: '01',
+    title: 'GPU Computing & CUDA',
+    day: '05 February 2027 · Friday',
+    time: '2:15 PM – 4:15 PM'
+  },
+  {
+    number: '02',
+    title: 'Generative AI & LLMs on HPC',
+    day: '06 February 2027 · Saturday',
+    time: '9:00 AM – 12:30 PM'
+  }
+];
+
+const rules = [
+  'Open to general registered participants.',
+  'Challenge participants cannot participate in the Hands-on Workshops.',
+  'Participants should attend the workshop start promptly, as hands-on exercises build sequentially.',
+  'Bring your own laptop unless informed otherwise by the organizing committee.',
+  'Seats may be limited; prior registration is recommended.'
 ];
 ---
 
@@ -13,30 +31,318 @@ const workshops = [
   heading="Hands-on Workshops"
   intro="A skill-development programme with two paid workshops: GPU Computing & CUDA and Generative AI & LLMs on HPC."
 >
-  <div class="big-list">
-    {workshops.map(([num, title, time]) => (
-      <div class="row">
-        <span class="num">{num}</span>
-        <div>
-          <h3>{title}</h3>
-          <p>{time}</p>
+  <section class="workshop-grid" aria-label="Hands-on workshops">
+    {workshops.map((workshop) => (
+      <article class={`workshop-card workshop-${workshop.number}`}>
+        <div class="card-top">
+          <span class="number">{workshop.number}</span>
+          <span class="tag">Hands-on Workshop</span>
         </div>
-      </div>
+
+        <h2>{workshop.title}</h2>
+
+        <div class="schedule">
+          <div class="schedule-item">
+            <span class="schedule-label">DATE</span>
+            <strong>{workshop.day}</strong>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-label">TIME</span>
+            <strong>{workshop.time}</strong>
+          </div>
+        </div>
+      </article>
     ))}
-  </div>
+  </section>
 
-  <div class="rules">
-    <strong>Registration fees</strong>
-    <span>One workshop — ₹300</span>
-    <span>Both workshops — ₹500</span>
-  </div>
+  <section class="fee-panel" aria-label="Registration fees">
+    <div class="fee-heading">
+      <span class="panel-label">REGISTRATION FEES</span>
+      <h2>Workshop Participation</h2>
+    </div>
+    <div class="fee-options">
+      <div class="fee-option">
+        <strong>₹300</strong>
+        <span>One Workshop</span>
+      </div>
+      <div class="fee-option featured">
+        <strong>₹500</strong>
+        <span>Both Workshops</span>
+      </div>
+    </div>
+  </section>
 
-  <div class="rules">
-    <strong>Workshop participation</strong>
-    <span>Open to general registered participants.</span>
-    <span>Challenge participants cannot participate in the Hands-on Workshops.</span>
-    <span>Participants should attend the workshop start promptly, as hands-on exercises build sequentially.</span>
-    <span>Bring your own laptop unless informed otherwise by the organizing committee.</span>
-    <span>Seats may be limited; prior registration is recommended.</span>
-  </div>
+  <section class="rules-panel" aria-label="Workshop participation rules">
+    <div class="rules-heading">
+      <span class="info-mark">i</span>
+      <div>
+        <span class="panel-label">IMPORTANT INFORMATION</span>
+        <h2>Workshop Participation Rules</h2>
+      </div>
+    </div>
+
+    <ul>
+      {rules.map((rule) => <li>{rule}</li>)}
+    </ul>
+  </section>
 </ConclavePage>
+
+<style>
+  .workshop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .workshop-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 390px;
+    padding: 30px 32px 34px;
+    border: 1px solid #d9e1eb;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #ffffff 0%, #fbfcff 100%);
+    box-shadow: 0 16px 42px rgba(39, 58, 82, 0.07);
+  }
+
+  .workshop-card::after {
+    content: '';
+    position: absolute;
+    right: -65px;
+    bottom: -95px;
+    width: 230px;
+    height: 180px;
+    border-radius: 50% 0 0 0;
+    background: linear-gradient(135deg, rgba(77, 124, 255, 0.08), rgba(108, 77, 255, 0.18));
+    pointer-events: none;
+  }
+
+  .workshop-02::after {
+    background: linear-gradient(135deg, rgba(136, 93, 255, 0.08), rgba(112, 70, 230, 0.18));
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .number {
+    display: inline-grid;
+    place-items: center;
+    width: 58px;
+    height: 46px;
+    border-radius: 16px;
+    background: #edf3ff;
+    color: #1646c4;
+    font-size: 17px;
+    font-weight: 800;
+  }
+
+  .workshop-02 .number {
+    background: #f0eaff;
+    color: #5830c8;
+  }
+
+  .tag {
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: #edf3ff;
+    color: #1646c4;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .workshop-02 .tag {
+    background: #f0eaff;
+    color: #5830c8;
+  }
+
+  .workshop-card h2 {
+    position: relative;
+    z-index: 1;
+    margin: 28px 0 30px;
+    max-width: 520px;
+    font-size: clamp(30px, 3vw, 42px);
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+  }
+
+  .schedule {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 20px;
+    padding-top: 24px;
+    border-top: 1px solid #dbe1ea;
+  }
+
+  .schedule-item {
+    display: grid;
+    gap: 5px;
+  }
+
+  .schedule-label,
+  .panel-label {
+    color: #50617a;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+  }
+
+  .schedule-item strong {
+    color: #17213a;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .fee-panel {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 30px;
+    align-items: center;
+    margin-top: 26px;
+    padding: 24px 28px;
+    border: 1px solid #e0e2f3;
+    border-radius: 22px;
+    background: linear-gradient(110deg, #f7f6ff, #fbfaff);
+  }
+
+  .fee-heading h2,
+  .rules-heading h2 {
+    margin: 5px 0 0;
+    color: #17213a;
+    font-size: clamp(25px, 3vw, 36px);
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+  }
+
+  .fee-options {
+    display: grid;
+    grid-template-columns: repeat(2, 170px);
+    gap: 14px;
+  }
+
+  .fee-option {
+    display: grid;
+    justify-items: center;
+    gap: 2px;
+    padding: 16px 12px;
+    border: 1px solid #d9e4f2;
+    border-radius: 15px;
+    background: #f2f7ff;
+  }
+
+  .fee-option.featured {
+    border-color: #e3d8ff;
+    background: #f5efff;
+  }
+
+  .fee-option strong {
+    color: #1746c5;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .fee-option.featured strong {
+    color: #5a2dca;
+  }
+
+  .fee-option span {
+    color: #26324b;
+    font-size: 14px;
+  }
+
+  .rules-panel {
+    margin-top: 26px;
+    padding: 30px 32px 32px;
+    border: 1px solid #d9e1eb;
+    border-radius: 22px;
+    background: #ffffff;
+  }
+
+  .rules-heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .info-mark {
+    display: grid;
+    flex: 0 0 52px;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #edf3ff;
+    color: #1646c4;
+    font-size: 23px;
+    font-weight: 800;
+  }
+
+  .rules-panel ul {
+    display: grid;
+    gap: 13px;
+    margin: 27px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rules-panel li {
+    position: relative;
+    padding-left: 34px;
+    color: #34415a;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .rules-panel li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    display: grid;
+    place-items: center;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background: #edf3ff;
+    color: #1646c4;
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  @media (max-width: 760px) {
+    .workshop-grid,
+    .fee-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .workshop-card {
+      min-height: auto;
+      padding: 24px;
+      border-radius: 18px;
+    }
+
+    .workshop-card h2 {
+      margin: 24px 0;
+      font-size: 31px;
+    }
+
+    .fee-panel,
+    .rules-panel {
+      padding: 24px;
+      border-radius: 18px;
+    }
+
+    .fee-options {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .rules-heading {
+      align-items: flex-start;
+    }
+  }
+</style>

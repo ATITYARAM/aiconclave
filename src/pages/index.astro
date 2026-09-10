@@ -1,50 +1,161 @@
 ---
-const events = [
-  { id: 'inauguration', number: '01', title: 'Inauguration', label: 'Keynote Address & Panel Discussion', date: '05 Feb 2027 · Friday', time: '9:30 AM – 11:00 AM', venue: 'Maharaja Auditorium' },
-  { id: 'pitch', number: '02', title: 'Pitch Your Idea', label: 'Early stage startups & Students – TRL 4 above', date: '05 Feb 2027 · Friday', time: '11:00 AM – 1:30 PM', venue: 'TBI – Conference Hall' },
-  { id: 'golang', number: '03', title: 'Workshop 1', label: 'GoLang Framework', date: '05 Feb 2027 · Friday', time: '1:30 PM – 4:30 PM', venue: 'Maharaja Auditorium' },
-  { id: 'hackathon', number: '04', title: '24 hrs Hackathon', label: 'For given problem statements', date: '05 – 06 Feb 2027', time: '1:00 PM – 1:00 PM', venue: 'CC 1, 2 & CC 11, 12' },
-  { id: 'genai', number: '05', title: 'Workshop 2', label: 'GenAI in Action', date: '06 Feb 2027 · Saturday', time: '9:30 AM – 12:30 PM', venue: 'Maharaja Auditorium' },
-  { id: 'expo', number: '06', title: 'Projects Expo', label: 'Top 12 teams', date: '06 Feb 2027 · Saturday', time: '9:30 AM – 12:30 PM', venue: 'CC 3, 4' },
-  { id: 'valedictory', number: '07', title: 'Valedictory', label: 'Guest Address & Prize Distribution', date: '06 Feb 2027 · Saturday', time: '3:30 PM – 4:30 PM', venue: 'Maharaja Auditorium' }
+const tracks = [
+  { id: 'showcase', title: 'HPC Industry Innovation Showcase', who: 'KEC students & faculty', fee: 'Free', detail: 'Bring and demonstrate a completed / working solution.' },
+  { id: 'challenge', title: 'HPC Industry Innovation Challenge', who: 'Registered challenge teams / external participants', fee: 'Free / nominal cost', detail: '24-hour competitive challenge to solve a real industry problem.' },
+  { id: 'workshops', title: 'Hands-on Workshops', who: 'General registered participants', fee: '₹300 one · ₹500 both', detail: 'GPU Computing & CUDA; Generative AI & LLMs on HPC.' }
 ];
-const registrationEvents = events.filter((event) => !['inauguration', 'valedictory'].includes(event.id));
+const workshopOptions = [
+  { id: 'cuda', title: 'GPU Computing & CUDA', day: 'Day 1 · 5 Feb · 2:15–4:15 PM', fee: 300 },
+  { id: 'genai', title: 'Generative AI & LLMs on HPC', day: 'Day 2 · 6 Feb · 9:00 AM–12:30 PM', fee: 300 }
+];
 ---
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Conclave 1.0 · Shape Next Reality</title>
-  <meta name="description" content="AI Conclave 1.0 at Kongu Engineering College. 5–6 February 2027." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HPC Innovation Conclave 2027 · Connect · Compute · Create · Showcase</title>
+  <meta name="description" content="HPC Innovation Conclave 2027 · 5–6 February 2027. Connect, Compute, Create and Showcase through HPC workshops, industry challenge and innovation showcase." />
 </head>
 <body>
 <main>
-<section class="hero"><div class="hero-inner">
-  <div class="topline"><span>AI CONCLAVE 1.0</span><span>05–06 FEB 2027 · KEC</span></div>
-  <div class="hero-copy"><p class="kicker">KONGU ENGINEERING COLLEGE</p><h1>Shape<br /><em>Next Reality.</em></h1><p class="intro">A two-day AI event organised by the Department of AI in association with the Innovation &amp; Entrepreneurship Forum (IEF), bringing together keynote discussions, workshops, a 24 hour hackathon, startup pitches and a projects expo.</p></div>
-  <div class="signals"><div><strong>07</strong><span>Event sessions</span></div><div><strong>24H</strong><span>Hackathon</span></div><div><strong>02</strong><span>Workshops</span></div><div><strong>12</strong><span>Expo teams</span></div></div>
-</div></section>
-<section class="about"><div class="section-label">AI CONCLAVE 1.0</div><div class="about-grid"><h2>Two days.<br /><em>One AI conclave.</em></h2><div><p>AI Conclave 1.0 takes place on Friday, 5 February and Saturday, 6 February 2027 at Maharaja Auditorium, KEC.</p><p>Organised by the Department of AI in association with Innovation &amp; Entrepreneurship Forum (IEF), Kongu Engineering College.</p></div></div></section>
-<section class="program"><div class="section-head"><div class="section-label">EVENT PLAN</div><p>05 &amp; 06 FEB 2027 · FRIDAY &amp; SATURDAY</p></div><div class="program-list">
-{events.map((event) => <article class="program-row"><span class="number">{event.number}</span><div class="event-main"><small>{event.label}</small><h2>{event.title}</h2><p>{event.venue}</p></div><div class="program-meta"><strong>{event.date}</strong><span>{event.time}</span></div></article>)}
-</div></section>
-<section class="closing"><p>MAHARAJA AUDITORIUM · KONGU ENGINEERING COLLEGE</p><h2>Shape the<br /><em>next reality.</em></h2><p class="organiser">Organised by Dept. of AI in association with Innovation &amp; Entrepreneurship Forum (IEF).</p></section>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="topline"><span>HPC INNOVATION CONCLAVE 2027</span><span>05–06 FEB 2027 · KEC</span></div>
+      <div class="hero-copy">
+        <p class="kicker">CONNECT · COMPUTE · CREATE · SHOWCASE</p>
+        <h1>Build with<br /><em>HPC.</em></h1>
+        <p class="intro">A two-day HPC-focused conclave bringing together industry leadership, hands-on computing workshops, a 24-hour industry innovation challenge and a showcase of solutions created by KEC students and faculty.</p>
+      </div>
+      <div class="signals">
+        <div><strong>02</strong><span>Days</span></div>
+        <div><strong>24H</strong><span>Innovation challenge</span></div>
+        <div><strong>02</strong><span>Hands-on workshops</span></div>
+        <div><strong>03</strong><span>Distinct tracks</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="section-label">THE CONCLAVE</div>
+    <div class="about-grid">
+      <h2>Connect.<br /><em>Compute. Create.</em></h2>
+      <div>
+        <p>HPC Innovation Conclave 2027 takes place on Friday, 5 February and Saturday, 6 February 2027.</p>
+        <p>The programme moves from keynote and industry leadership discussions into parallel hands-on learning, competitive problem solving and innovation showcase activities.</p>
+        <p>Day 2 brings the GenAI &amp; LLMs on HPC workshop, KEC Innovation Showcase, careers and certifications, final challenge evaluation and the closing ceremony.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tracks">
+    <div class="section-head"><div class="section-label">THREE TRACKS</div><p>CHOOSE ONE · CROSS-PARTICIPATION NOT PERMITTED</p></div>
+    <div class="track-list">
+      {tracks.map((track, index) => (
+        <article class="track-row">
+          <span class="number">0{index + 1}</span>
+          <div><small>{track.who}</small><h2>{track.title}</h2><p>{track.detail}</p></div>
+          <strong class="fee">{track.fee}</strong>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="schedule">
+    <div class="section-head"><div class="section-label">EVENT SCHEDULE</div><p>05–06 FEB 2027 · FRIDAY &amp; SATURDAY</p></div>
+    <div class="day-block">
+      <div class="day-title"><span>DAY 1</span><h2>Connect &amp; Explore</h2><strong>05 FEB · FRIDAY</strong></div>
+      <div class="schedule-grid common">
+        <div><b>9:00 – 9:30 AM</b><span>Registration &amp; Networking</span></div>
+        <div><b>9:30 – 10:15 AM</b><span>Inauguration</span></div>
+        <div><b>10:15 – 11:15 AM</b><span>HPC Keynote</span></div>
+        <div><b>11:15 – 11:30 AM</b><span>Tea Break</span></div>
+        <div><b>11:30 AM – 1:00 PM</b><span>Industry Leadership Panel</span></div>
+        <div><b>1:00 – 2:00 PM</b><span>Lunch</span></div>
+      </div>
+      <div class="parallel-label">2:00 PM onwards · Two Parallel Tracks</div>
+      <div class="parallel-grid">
+        <div class="column workshop"><h3>Track A · Hands-on Workshop</h3><p><b>2:00 – 2:15 PM</b> GPU Computing &amp; CUDA Workshop begins</p><p><b>2:15 – 4:15 PM</b> Hands-on workshop</p></div>
+        <div class="column challenge"><h3>Track B · HPC Industry Innovation Challenge</h3><p><b>2:00 – 2:15 PM</b> Challenge Briefing &amp; Rules</p><p><b>2:15 – 4:15 PM</b> 24-Hour Challenge — Development Begins</p><p><b>4:15 – 4:30 PM</b> Challenge Continues</p><p><b>4:30 PM onwards</b> Challenge Continues Non-Stop</p></div>
+      </div>
+    </div>
+    <div class="day-block">
+      <div class="day-title"><span>DAY 2</span><h2>Build &amp; Showcase</h2><strong>06 FEB · SATURDAY</strong></div>
+      <div class="schedule-grid day2">
+        <div><b>9:00 – 10:15 AM</b><span>GenAI &amp; LLMs on HPC Workshop<br />Showcase Setup / Preparation<br />Challenge Continues</span></div>
+        <div><b>10:30 AM – 12:30 PM</b><span>HPC Industry Innovation Showcase — Session I<br />Challenge Continues</span></div>
+        <div><b>12:30 – 1:30 PM</b><span>Lunch · Showcase Continues · Challenge Continues</span></div>
+        <div><b>1:30 – 2:30 PM</b><span>HPC Careers and Certifications<br />HPC Industry Innovation Showcase — Session II<br />Challenge Continues</span></div>
+        <div><b>2:30 – 3:15 PM</b><span>Break · Showcase / Jury Interaction · Challenge Continues</span></div>
+        <div><b>Before 3:15 PM</b><span>Showcase Final Interaction &amp; Recognition<br />Challenge Final Submission and Evaluation</span></div>
+        <div><b>3:15 – 4:15 PM</b><span>Valedictory &amp; Closing</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prizes">
+    <div class="section-label">PRIZE STRUCTURE</div>
+    <div class="prize-grid">
+      <div><small>HPC INDUSTRY INNOVATION CHALLENGE</small><h2>₹35,000</h2><p>First ₹20,000 · Second ₹10,000 · Third ₹5,000</p></div>
+      <div><small>HPC INDUSTRY INNOVATION SHOWCASE</small><h2>₹10,000</h2><p>Best Student Innovation ₹5,000 · Best Faculty Innovation ₹5,000</p></div>
+      <div class="total"><small>TOTAL PRIZE COMMITMENT</small><h2>₹45,000</h2></div>
+    </div>
+  </section>
+
+  <section class="closing"><p>HPC INNOVATION CONCLAVE 2027 · 05–06 FEBRUARY</p><h2>Connect.<br /><em>Compute. Create. Showcase.</em></h2><p class="organiser">Kongu Engineering College · HPC-focused workshops, industry challenge and innovation showcase.</p></section>
 </main>
-<div class="registration-bar"><div class="bar-copy"><span>AI CONCLAVE 1.0</span><strong>Registration</strong></div><button id="open-registration" class="register-button">Register <span>↗</span></button></div>
-<div id="registration-modal" class="modal" aria-hidden="true"><div class="modal-backdrop" data-close></div><section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="registration-title"><button class="close" type="button" aria-label="Close registration" data-close>×</button><div class="modal-header"><p class="kicker">REGISTRATION</p><h2 id="registration-title">Register for AI Conclave 1.0.</h2><p>Enter your details and select the event sessions you want to attend.</p></div><form id="registration-form"><div class="fields"><label>Full name *<input name="name" required autocomplete="name" placeholder="Full name" /></label><label>Email *<input name="email" type="email" required autocomplete="email" placeholder="Email address" /></label><label>Mobile *<input name="phone" type="tel" required autocomplete="tel" placeholder="Mobile number" /></label><label>Institution / Organisation *<input name="institution" required placeholder="Institution or organisation" /></label><label>Participant type *<select name="role" required><option value="">Select participant type</option><option>Student</option><option>Faculty / Researcher</option><option>Startup / Founder</option><option>Industry Professional</option><option>Other</option></select></label><label>City<input name="city" placeholder="City" /></label></div><div class="choose"><p class="kicker">EVENTS</p><h3>Select your participation</h3><div class="track-grid">{registrationEvents.map((event) => <label class="track-option"><input type="checkbox" name="events" value={event.id} /><span class="box"></span><span><b>{event.title}</b><small>{event.label}</small></span></label>)}</div></div><label class="consent"><input type="checkbox" required /> <span>I confirm that the information provided is accurate.</span></label><button class="continue" type="submit">Continue <span>→</span></button><p id="status" class="status" aria-live="polite"></p></form></section></div>
+
+<div class="registration-bar"><div class="bar-copy"><span>HPC INNOVATION CONCLAVE 2027</span><strong>Choose your track</strong></div><button id="open-registration" class="register-button">Register <span>↗</span></button></div>
+
+<div id="registration-modal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="registration-title">
+    <button class="close" type="button" aria-label="Close registration" data-close>×</button>
+    <div class="modal-header"><p class="kicker">REGISTRATION</p><h2 id="registration-title">Choose your HPC track.</h2><p>Register in advance. Participation is restricted to one track; cross-participation between Showcase, Challenge and Workshops is not permitted.</p></div>
+    <form id="registration-form">
+      <div class="fields">
+        <label>Full name *<input name="name" required autocomplete="name" placeholder="Full name" /></label>
+        <label>Email *<input name="email" type="email" required autocomplete="email" placeholder="Email address" /></label>
+        <label>Mobile *<input name="phone" type="tel" required autocomplete="tel" placeholder="Mobile number" /></label>
+        <label>Institution / Organisation *<input name="institution" required placeholder="Institution or organisation" /></label>
+        <label>Participant type *<select name="role" required><option value="">Select participant type</option><option>KEC Student</option><option>KEC Faculty</option><option>External Participant</option><option>Industry / Professional</option></select></label>
+        <label>Team name<input name="team" placeholder="For Challenge teams, if applicable" /></label>
+      </div>
+      <div class="choose"><p class="kicker">TRACK</p><h3>Select exactly one</h3><div class="track-choice">
+        <label class="choice"><input type="radio" name="track" value="showcase" required /><span class="radio"></span><span><b>HPC Industry Innovation Showcase</b><small>KEC students &amp; faculty · Free · Completed / working solution</small></span></label>
+        <label class="choice"><input type="radio" name="track" value="challenge" /><span class="radio"></span><span><b>HPC Industry Innovation Challenge</b><small>Registered teams / external participants · Free / nominal cost · 24 hours</small></span></label>
+        <label class="choice"><input type="radio" name="track" value="workshops" /><span class="radio"></span><span><b>Hands-on Workshops</b><small>General registered participants · ₹300 one workshop / ₹500 both</small></span></label>
+      </div></div>
+      <div id="workshop-section" class="choose hidden"><p class="kicker">WORKSHOP REGISTRATION</p><h3>Select one or both</h3><div class="workshop-options">
+        {workshopOptions.map((workshop) => <label class="choice"><input type="checkbox" name="workshops" value={workshop.id} /><span class="box"></span><span><b>{workshop.title}</b><small>{workshop.day} · ₹{workshop.fee}</small></span></label>)}
+      </div><p class="price-note">One workshop: ₹300 · Both workshops: ₹500</p></div>
+      <div id="rules" class="rules"><b>Before registering</b><span>Challenge participants cannot participate in the workshops.</span><span>Showcase is open only to KEC students and faculty.</span><span>Bring your own laptop for hands-on workshops unless informed otherwise.</span></div>
+      <label class="consent"><input type="checkbox" required /> <span>I confirm that the information provided is accurate and I agree to the participation rules.</span></label>
+      <button class="continue" type="submit">Continue <span>→</span></button>
+      <p id="status" class="status" aria-live="polite"></p>
+    </form>
+  </section>
+</div>
+
 <script>
-const modal=document.querySelector('#registration-modal'),openButton=document.querySelector('#open-registration'),form=document.querySelector('#registration-form'),status=document.querySelector('#status');
+const modal=document.querySelector('#registration-modal'),openButton=document.querySelector('#open-registration'),form=document.querySelector('#registration-form'),status=document.querySelector('#status'),workshopSection=document.querySelector('#workshop-section');
 const closeModal=()=>{modal?.setAttribute('aria-hidden','true');document.body.classList.remove('locked')};
 openButton?.addEventListener('click',()=>{modal?.setAttribute('aria-hidden','false');document.body.classList.add('locked');setTimeout(()=>modal?.querySelector('input')?.focus(),50)});
 modal?.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click',closeModal));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-form?.addEventListener('submit',e=>{e.preventDefault();status.textContent='Registration form ready for the payment gateway connection.'});
+form?.querySelectorAll('input[name="track"]').forEach(radio=>radio.addEventListener('change',()=>{workshopSection?.classList.toggle('hidden',radio.value!=='workshops'||!radio.checked);if(radio.value!=='workshops'&&radio.checked)workshopSection?.querySelectorAll('input[type="checkbox"]').forEach(input=>input.checked=false)}));
+form?.addEventListener('submit',e=>{e.preventDefault();const track=form.querySelector('input[name="track"]:checked')?.value;if(track==='workshops'&&!form.querySelectorAll('input[name="workshops"]:checked').length){status.textContent='Select at least one workshop.';return}status.textContent='Registration details captured. Payment gateway connection will be added next.'});
 </script>
 </body></html>
+
 <style>
 :global(*){box-sizing:border-box}:global(html){scroll-behavior:smooth}:global(body){margin:0;background:#f7f6f2;color:#161616;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}:global(body.locked){overflow:hidden}:global(button),:global(input),:global(select){font:inherit}
-.hero{min-height:86vh;border-bottom:1px solid #d8d6cf;background:radial-gradient(circle at 75% 18%,rgba(169,52,52,.10),transparent 30%),linear-gradient(145deg,#fbfaf7,#f1f0eb 65%,#faf9f5)}.hero-inner{width:min(1180px,calc(100% - 44px));min-height:86vh;margin:auto;padding:30px 0 54px;display:flex;flex-direction:column}.topline{display:flex;justify-content:space-between;border-bottom:1px solid #d7d5ce;padding-bottom:17px;color:#77746e;font-size:10px;font-weight:800;letter-spacing:.2em}.hero-copy{margin:auto 0;padding:70px 0 80px}.kicker,.section-label{margin:0;color:#9f4141;font-size:10px;font-weight:850;letter-spacing:.2em}h1{margin:16px 0 24px;font-size:clamp(64px,11vw,150px);line-height:.82;letter-spacing:-.075em;font-weight:780}h1 em,h2 em{color:#a54242;font-family:Georgia,serif;font-weight:400}.intro{max-width:650px;margin:0;color:#66635d;font-size:clamp(15px,1.6vw,19px);line-height:1.65}.signals{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d7d5ce;padding-top:18px}.signals div{display:flex;flex-direction:column;gap:4px;border-left:1px solid #d7d5ce;padding-left:18px}.signals div:first-child{border-left:0;padding-left:0}.signals strong{font-size:22px;letter-spacing:-.03em}.signals span{color:#77746e;font-size:10px;text-transform:uppercase;letter-spacing:.12em}
-.about,.program{width:min(1180px,calc(100% - 44px));margin:auto}.about{padding:105px 0 110px}.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:end;margin-top:28px}.about h2{margin:0;font-size:clamp(42px,6vw,78px);line-height:.94;letter-spacing:-.065em}.about-grid div{border-left:1px solid #d7d5ce;padding-left:25px}.about-grid p{margin:0 0 14px;color:#66635d;font-size:14px;line-height:1.7}.about-grid p:last-child{margin-bottom:0}.program{padding:0 0 120px}.section-head{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid #d0cec7;padding-bottom:17px}.section-head p{margin:0;color:#77746e;font-size:10px;letter-spacing:.15em}.program-row{display:grid;grid-template-columns:70px 1fr auto;gap:20px;align-items:center;padding:28px 0;border-bottom:1px solid #d8d6cf}.number{color:#8b8881;font-size:11px}.event-main small{color:#77746e;font-size:10px;text-transform:uppercase;letter-spacing:.12em}.event-main h2{margin:7px 0 5px;font-size:clamp(23px,3vw,38px);letter-spacing:-.045em}.event-main p{margin:0;color:#8a8780;font-size:11px}.program-meta{display:flex;flex-direction:column;align-items:flex-end;gap:5px;color:#77746e;font-size:11px;text-align:right}.program-meta strong{color:#33312e;font-weight:700}.closing{min-height:58vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-top:1px solid #d8d6cf;padding:80px 22px 170px}.closing>p:first-child{color:#77746e;font-size:10px;letter-spacing:.18em}.closing h2{margin:20px 0 0;font-size:clamp(48px,8vw,100px);line-height:.9;letter-spacing:-.065em}.closing .organiser{max-width:650px;margin:28px 0 0;color:#77746e;font-size:11px;line-height:1.6}
-.registration-bar{position:fixed;z-index:20;left:50%;bottom:18px;transform:translateX(-50%);width:min(1050px,calc(100% - 28px));padding:12px 13px 12px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid #d2d0c9;border-radius:15px;background:rgba(255,255,252,.93);backdrop-filter:blur(18px);box-shadow:0 18px 60px rgba(40,36,28,.13)}.bar-copy{display:flex;flex-direction:column;gap:3px}.bar-copy span{color:#9f4141;font-size:9px;font-weight:850;letter-spacing:.18em}.bar-copy strong{font-size:13px}.register-button,.continue{border:0;border-radius:9px;background:#a54242;color:#fff;padding:14px 19px;font-weight:800;cursor:pointer}.register-button:hover,.continue:hover{background:#8f3838}.register-button span,.continue span{margin-left:14px}
-.modal{position:fixed;z-index:40;inset:0;display:none}.modal[aria-hidden="false"]{display:block}.modal-backdrop{position:absolute;inset:0;background:rgba(28,26,23,.42);backdrop-filter:blur(9px)}.modal-panel{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(760px,calc(100% - 28px));max-height:calc(100vh - 34px);overflow:auto;border:1px solid #d5d3cc;border-radius:18px;background:#fbfaf7;box-shadow:0 30px 100px rgba(40,36,28,.25);padding:32px}.close{position:absolute;top:16px;right:17px;border:0;background:transparent;color:#77746e;font-size:28px;cursor:pointer}.modal-header{padding-right:35px;padding-bottom:25px;border-bottom:1px solid #ddd9d1}.modal-header h2{margin:10px 0 8px;font-size:clamp(34px,5vw,52px);letter-spacing:-.06em}.modal-header p:last-child{max-width:560px;margin:0;color:#6f6c65;font-size:13px;line-height:1.6}form{padding-top:25px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:15px}label{color:#55524d;font-size:11px;font-weight:700}input,select{display:block;width:100%;margin-top:7px;border:1px solid #d5d2ca;border-radius:9px;outline:none;background:#fffefa;color:#20201e;padding:12px 13px}input::placeholder{color:#a19e97}input:focus,select:focus{border-color:#a54242}.choose{margin-top:27px;padding-top:25px;border-top:1px solid #ddd9d1}.choose h3{margin:7px 0 15px;font-size:17px}.track-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.track-option{display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid #d7d4cc;border-radius:9px;cursor:pointer;background:#fffefa}.track-option:has(input:checked){border-color:#a54242;background:#fbf2f2}.track-option input{display:none}.box{width:16px;height:16px;flex:0 0 16px;border:1px solid #aaa69e;border-radius:4px;margin-top:1px}.track-option:has(input:checked) .box{background:#a54242;box-shadow:inset 0 0 0 3px #fbf2f2;border-color:#a54242}.track-option b,.track-option small{display:block}.track-option b{color:#282724;font-size:11px}.track-option small{margin-top:4px;color:#77746e;font-size:9px;font-weight:500}.consent{display:flex;gap:9px;margin:20px 0;color:#77746e;font-weight:500;line-height:1.5}.consent input{display:block;width:16px;height:16px;flex:0 0 16px;margin:0}.status{min-height:18px;margin:12px 0 0;color:#9f4141;font-size:11px}
-@media(max-width:700px){.hero-inner,.about,.program{width:min(100% - 30px,1180px)}.topline{font-size:8px}.hero-copy{padding:55px 0 65px}.signals{grid-template-columns:1fr 1fr;gap:18px 0}.signals div:nth-child(3){border-left:0;padding-left:0}.about-grid{grid-template-columns:1fr;gap:28px}.about-grid div{border-left:0;border-top:1px solid #d7d5ce;padding:20px 0 0}.program-row{grid-template-columns:35px 1fr;gap:10px}.program-meta{grid-column:2;align-items:flex-start;text-align:left;margin-top:3px}.fields,.track-grid{grid-template-columns:1fr}.modal-panel{padding:25px 20px}.registration-bar{bottom:10px}.closing{padding-bottom:145px}}
+.hero{min-height:86vh;border-bottom:1px solid #d8d6cf;background:radial-gradient(circle at 75% 18%,rgba(49,105,139,.11),transparent 30%),linear-gradient(145deg,#fbfaf7,#f1f0eb 65%,#faf9f5)}.hero-inner{width:min(1180px,calc(100% - 44px));min-height:86vh;margin:auto;padding:30px 0 54px;display:flex;flex-direction:column}.topline{display:flex;justify-content:space-between;border-bottom:1px solid #d7d5ce;padding-bottom:17px;color:#77746e;font-size:10px;font-weight:800;letter-spacing:.18em}.hero-copy{margin:auto 0;padding:70px 0 80px}.kicker,.section-label{margin:0;color:#31708f;font-size:10px;font-weight:850;letter-spacing:.2em}.hero h1{margin:16px 0 24px;font-size:clamp(64px,11vw,150px);line-height:.82;letter-spacing:-.075em;font-weight:780}.hero h1 em,h2 em{color:#2f708f;font-family:Georgia,serif;font-weight:400}.intro{max-width:720px;margin:0;color:#66635d;font-size:clamp(15px,1.6vw,19px);line-height:1.65}.signals{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d7d5ce;padding-top:18px}.signals div{display:flex;flex-direction:column;gap:4px;border-left:1px solid #d7d5ce;padding-left:18px}.signals div:first-child{border-left:0;padding-left:0}.signals strong{font-size:22px;letter-spacing:-.03em}.signals span{color:#77746e;font-size:10px;text-transform:uppercase;letter-spacing:.12em}
+.about,.tracks,.schedule,.prizes{width:min(1180px,calc(100% - 44px));margin:auto}.about{padding:105px 0 90px}.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:end;margin-top:28px}.about h2{margin:0;font-size:clamp(42px,6vw,78px);line-height:.94;letter-spacing:-.065em}.about-grid div{border-left:1px solid #d7d5ce;padding-left:25px}.about-grid p{margin:0 0 14px;color:#66635d;font-size:14px;line-height:1.7}.about-grid p:last-child{margin-bottom:0}
+.section-head{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid #d0cec7;padding-bottom:17px}.section-head p{margin:0;color:#77746e;font-size:10px;letter-spacing:.12em}.tracks{padding:30px 0 110px}.track-row{display:grid;grid-template-columns:70px 1fr auto;gap:20px;align-items:center;padding:30px 0;border-bottom:1px solid #d8d6cf}.number{color:#8b8881;font-size:11px}.track-row small{color:#77746e;font-size:10px;text-transform:uppercase;letter-spacing:.1em}.track-row h2{margin:7px 0 6px;font-size:clamp(25px,3vw,40px);letter-spacing:-.045em}.track-row p{margin:0;color:#77746e;font-size:12px}.fee{color:#2f708f;font-size:14px;white-space:nowrap}
+.schedule{padding:0 0 110px}.day-block{padding:38px 0 0}.day-title{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:baseline;margin-bottom:22px}.day-title span{color:#31708f;font-size:10px;font-weight:900;letter-spacing:.16em}.day-title h2{margin:0;font-size:32px;letter-spacing:-.04em}.day-title strong{font-size:10px;color:#77746e;letter-spacing:.12em}.schedule-grid{border-top:1px solid #d8d6cf}.schedule-grid>div{display:grid;grid-template-columns:210px 1fr;gap:25px;padding:14px 0;border-bottom:1px solid #e0ded8;font-size:12px}.schedule-grid b{color:#4d4a45}.schedule-grid span{color:#6f6c65;line-height:1.55}.parallel-label{margin:28px 0 10px;color:#31708f;font-size:11px;font-weight:800;letter-spacing:.08em}.parallel-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.column{padding:20px;border:1px solid #d8d6cf;border-radius:12px}.column h3{margin:0 0 13px;font-size:13px}.column p{margin:9px 0;color:#6f6c65;font-size:11px;line-height:1.55}.workshop{background:#f2f7f9}.challenge{background:#faf3ef}.day-block+.day-block{margin-top:65px}.day2>div{padding:15px 0}.day2 span{line-height:1.7}
+.prizes{padding:0 0 120px}.prize-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:25px}.prize-grid>div{border:1px solid #d8d6cf;border-radius:12px;padding:25px;background:#fbfaf7}.prize-grid small{color:#77746e;font-size:9px;letter-spacing:.12em;font-weight:800}.prize-grid h2{margin:10px 0 8px;font-size:38px;letter-spacing:-.05em}.prize-grid p{margin:0;color:#77746e;font-size:11px;line-height:1.6}.prize-grid .total{background:#f1f5f6;border-color:#cbdde4}.prize-grid .total h2{color:#2f708f}
+.closing{min-height:58vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-top:1px solid #d8d6cf;padding:80px 22px 170px}.closing>p:first-child{color:#77746e;font-size:10px;letter-spacing:.18em}.closing h2{margin:20px 0 0;font-size:clamp(48px,8vw,100px);line-height:.9;letter-spacing:-.065em}.closing .organiser{max-width:650px;margin:28px 0 0;color:#77746e;font-size:11px;line-height:1.6}
+.registration-bar{position:fixed;z-index:20;left:50%;bottom:18px;transform:translateX(-50%);width:min(1050px,calc(100% - 28px));padding:12px 13px 12px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid #d2d0c9;border-radius:15px;background:rgba(255,255,252,.93);backdrop-filter:blur(18px);box-shadow:0 18px 60px rgba(40,36,28,.13)}.bar-copy{display:flex;flex-direction:column;gap:3px}.bar-copy span{color:#31708f;font-size:9px;font-weight:850;letter-spacing:.14em}.bar-copy strong{font-size:13px}.register-button,.continue{border:0;border-radius:9px;background:#2f708f;color:#fff;padding:14px 19px;font-weight:800;cursor:pointer}.register-button:hover,.continue:hover{background:#255d76}.register-button span,.continue span{margin-left:14px}
+.modal{position:fixed;z-index:40;inset:0;display:none}.modal[aria-hidden="false"]{display:block}.modal-backdrop{position:absolute;inset:0;background:rgba(28,26,23,.42);backdrop-filter:blur(9px)}.modal-panel{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(800px,calc(100% - 28px));max-height:calc(100vh - 34px);overflow:auto;border:1px solid #d5d3cc;border-radius:18px;background:#fbfaf7;box-shadow:0 30px 100px rgba(40,36,28,.25);padding:32px}.close{position:absolute;top:16px;right:17px;border:0;background:transparent;color:#77746e;font-size:28px;cursor:pointer}.modal-header{padding-right:35px;padding-bottom:25px;border-bottom:1px solid #ddd9d1}.modal-header h2{margin:10px 0 8px;font-size:clamp(34px,5vw,52px);letter-spacing:-.06em}.modal-header p:last-child{max-width:620px;margin:0;color:#6f6c65;font-size:13px;line-height:1.6}form{padding-top:25px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:15px}label{color:#55524d;font-size:11px;font-weight:700}input,select{display:block;width:100%;margin-top:7px;border:1px solid #d5d2ca;border-radius:9px;outline:none;background:#fffefa;color:#20201e;padding:12px 13px}input::placeholder{color:#a19e97}input:focus,select:focus{border-color:#2f708f}.choose{margin-top:27px;padding-top:25px;border-top:1px solid #ddd9d1}.choose h3{margin:7px 0 15px;font-size:17px}.track-choice,.workshop-options{display:grid;gap:9px}.choice{display:flex;align-items:flex-start;gap:10px;padding:13px;border:1px solid #d7d4cc;border-radius:9px;cursor:pointer;background:#fffefa}.choice:has(input:checked){border-color:#2f708f;background:#f1f7f9}.choice input{display:none}.radio,.box{width:16px;height:16px;flex:0 0 16px;border:1px solid #aaa69e;margin-top:1px}.radio{border-radius:50%}.choice:has(input:checked) .radio{border:5px solid #2f708f}.box{border-radius:4px}.choice:has(input:checked) .box{background:#2f708f;box-shadow:inset 0 0 0 3px #f1f7f9;border-color:#2f708f}.choice b,.choice small{display:block}.choice b{color:#282724;font-size:11px}.choice small{margin-top:4px;color:#77746e;font-size:9px;font-weight:500;line-height:1.5}.hidden{display:none}.price-note{margin:10px 0 0;color:#2f708f;font-size:11px;font-weight:700}.rules{display:grid;gap:6px;margin-top:22px;padding:14px;border:1px solid #e0ddd5;border-radius:9px;background:#f7f6f2;color:#77746e;font-size:10px;line-height:1.5}.rules b{color:#44413c}.consent{display:flex;gap:9px;margin:20px 0;color:#77746e;font-weight:500;line-height:1.5}.consent input{display:block;width:16px;height:16px;flex:0 0 16px;margin:0}.status{min-height:18px;margin:12px 0 0;color:#2f708f;font-size:11px}
+@media(max-width:700px){.hero-inner,.about,.tracks,.schedule,.prizes{width:min(100% - 30px,1180px)}.topline{font-size:8px}.hero-copy{padding:55px 0 65px}.signals{grid-template-columns:1fr 1fr;gap:18px 0}.signals div:nth-child(3){border-left:0;padding-left:0}.about-grid{grid-template-columns:1fr;gap:28px}.about-grid div{border-left:0;border-top:1px solid #d7d5ce;padding:20px 0 0}.track-row{grid-template-columns:35px 1fr;gap:10px}.fee{grid-column:2}.day-title{grid-template-columns:auto 1fr;gap:10px}.day-title strong{grid-column:2}.schedule-grid>div{grid-template-columns:1fr;gap:5px}.parallel-grid,.prize-grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr}.modal-panel{padding:25px 20px}.registration-bar{bottom:10px}.closing{padding-bottom:145px}}
 </style>

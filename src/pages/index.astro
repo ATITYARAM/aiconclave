@@ -1,31 +1,241 @@
 ---
 const tracks = [
-  ['01','HPC Industry Innovation Showcase','KEC students & faculty','Free'],
-  ['02','HPC Industry Innovation Challenge','Registered teams / external participants','Free / nominal cost'],
-  ['03','Hands-on Workshops','General registered participants','₹300 one · ₹500 both']
+  ['01', 'HPC Industry Innovation Showcase', 'KEC students & faculty', 'Free', '/aiconclave/showcase/'],
+  ['02', 'HPC Industry Innovation Challenge', 'Registered teams / external participants', 'Free / nominal cost', '/aiconclave/challenge/'],
+  ['03', 'Hands-on Workshops', 'General registered participants', '₹300 one · ₹500 both', '/aiconclave/workshops/']
+];
+
+const highlights = [
+  ['01', 'Industry Leadership', 'Keynotes, leadership discussion and practical HPC perspectives.'],
+  ['02', 'Hands-on Computing', 'Workshops focused on GPU Computing & CUDA and GenAI & LLMs on HPC.'],
+  ['03', '24-hour Challenge', 'A continuous industry innovation challenge from 5 to 6 February.'],
+  ['04', 'Innovation Showcase', 'KEC students and faculty present their completed or working solutions.']
 ];
 ---
+
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>HPC Innovation Conclave 2027</title><meta name="description" content="HPC Innovation Conclave 2027 · 5–6 February 2027 at Kongu Engineering College." /></head>
-<body>
-<header class="site-header"><nav aria-label="Main navigation"><a href="/aiconclave/announcement/">Announcement</a><a href="/aiconclave/about/">About</a><a href="/aiconclave/tracks/">Tracks</a><a href="/aiconclave/event-plan/">Event Plan</a><a href="/aiconclave/showcase/">Showcase</a><a href="/aiconclave/challenge/">Challenge</a><a href="/aiconclave/workshops/">Workshops</a></nav></header>
-<main>
-<section class="hero"><div class="hero-inner"><div class="topline"><span>HPC INNOVATION CONCLAVE 2027</span><span>05–06 FEB 2027 · KEC</span></div><div class="identity-strip"><div class="identity-mark"><strong>KEC</strong><span>Kongu Engineering College</span></div><div class="identity-mark"><strong>CSE</strong><span>Association</span></div></div><div class="hero-copy"><p class="kicker">CONNECT · COMPUTE · CREATE · SHOWCASE</p><h1>Build with<br /><em>HPC.</em></h1><p class="intro">A two-day HPC-focused conclave bringing together industry leadership, hands-on computing workshops, a 24-hour industry innovation challenge and a showcase of solutions created by KEC students and faculty.</p></div><div class="signals"><div><strong>02</strong><span>Days</span></div><div><strong>24H</strong><span>Innovation challenge</span></div><div><strong>02</strong><span>Hands-on workshops</span></div><div><strong>03</strong><span>Distinct tracks</span></div></div></div></section>
-<section class="about"><div class="label">ABOUT THE CONCLAVE</div><div class="about-grid"><h2>Connect.<br /><em>Compute. Create.</em></h2><div><p>HPC Innovation Conclave 2027 takes place on <strong>Friday, 5 February and Saturday, 6 February 2027</strong> at Kongu Engineering College.</p><p>The programme moves from keynote and industry leadership discussions into hands-on learning, competitive problem solving and innovation showcase activities.</p><a class="text-link" href="/aiconclave/about/">Read about the conclave →</a></div></div></section>
-<section class="tracks"><div class="section-head"><div class="label">THREE TRACKS</div><a href="/aiconclave/tracks/">View all tracks →</a></div><div class="track-list">{tracks.map(([num,title,who,fee])=><a class="track-row" href={num==='01'?'/aiconclave/showcase/':num==='02'?'/aiconclave/challenge/':'/aiconclave/workshops/'}><span class="number">{num}</span><div><small>{who}</small><h2>{title}</h2></div><strong>{fee}</strong></a>)}</div></section>
-<section class="plan"><div class="label">EVENT PLAN</div><h2>05 FEB<br /><em>Connect &amp; Explore.</em></h2><p>Inauguration · HPC Keynote · Industry Leadership Panel · GPU Computing &amp; CUDA · Challenge Launch</p><h2>06 FEB<br /><em>Build &amp; Showcase.</em></h2><p>GenAI &amp; LLMs on HPC · Innovation Showcase · Careers &amp; Certifications · Challenge Evaluation · Closing</p><a class="text-link" href="/aiconclave/event-plan/">See the complete event plan →</a></section>
-<section class="closing"><p>HPC INNOVATION CONCLAVE 2027 · 05–06 FEBRUARY</p><h2>Connect.<br /><em>Compute. Create. Showcase.</em></h2><p>Explore the programme and choose your participation track.</p></section>
-</main>
-<div class="registration-bar"><div><span>HPC INNOVATION CONCLAVE 2027</span><strong>Choose your track</strong></div><button class="register-button" id="register-open" type="button">Register <span>↗</span></button></div>
-<div class="rules-modal" id="rules-modal" aria-hidden="true"><div class="rules-backdrop" data-rules-close></div><section class="rules-panel" role="dialog" aria-modal="true" aria-labelledby="rules-title"><button class="rules-close" type="button" aria-label="Close" data-rules-close>×</button><p class="kicker">BEFORE YOU REGISTER</p><h2 id="rules-title">Rules &amp;<br /><em>constraints.</em></h2><p class="rules-intro">Please read the participation rules before continuing to the registration and payment page.</p><div class="rule-list"><div><b>01</b><span>Participation is restricted to <strong>one track only</strong> — Showcase, Challenge, or Workshops.</span></div><div><b>02</b><span>Cross-participation across tracks is not permitted.</span></div><div><b>03</b><span>Challenge participants cannot participate in the Hands-on Workshops on either day.</span></div><div><b>04</b><span>All participants must complete registration in advance and carry valid registration confirmation / ID.</span></div><div><b>05</b><span>Showcase is for KEC students and faculty and requires a completed / working solution.</span></div><div><b>06</b><span>The Challenge runs continuously for 24 hours from 2:15 PM on 5 February to 2:15 PM on 6 February.</span></div><div><b>07</b><span>Workshops cost ₹300 for one workshop or ₹500 for both; participants should bring their own laptop.</span></div><div><b>08</b><span>Lunch is provided only for participants of the 24-hour Innovation Challenge.</span></div></div><div class="countdown-wrap"><span id="countdown">30</span><small>seconds remaining before continuing</small></div><button id="rules-continue" class="rules-continue" type="button" disabled>Continue to registration <span>→</span></button><p id="wait-note" class="wait-note">The registration button will unlock after the 30-second review period.</p></section></div>
-</body></html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HPC Innovation Conclave 2027</title>
+    <meta name="description" content="HPC Innovation Conclave 2027 · 5–6 February 2027 at Kongu Engineering College." />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav aria-label="Main navigation">
+        <a href="/aiconclave/announcement/">Announcement</a>
+        <a href="/aiconclave/about/">About</a>
+        <a href="/aiconclave/tracks/">Tracks</a>
+        <a href="/aiconclave/event-plan/">Event Plan</a>
+        <a href="/aiconclave/showcase/">Showcase</a>
+        <a href="/aiconclave/challenge/">Challenge</a>
+        <a href="/aiconclave/workshops/">Workshops</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="topline">
+            <span>HPC INNOVATION CONCLAVE 2027</span>
+            <span>05–06 FEB 2027 · KEC</span>
+          </div>
+
+          <div class="identity-strip">
+            <div class="identity-mark"><strong>KEC</strong><span>Kongu Engineering College</span></div>
+            <div class="identity-mark"><strong>CSE</strong><span>Association</span></div>
+          </div>
+
+          <div class="hero-copy">
+            <p class="kicker">CONNECT · COMPUTE · CREATE · SHOWCASE</p>
+            <h1>Build with<br /><em>HPC.</em></h1>
+            <p class="intro">A two-day HPC-focused conclave bringing together industry leadership, hands-on computing workshops, a 24-hour industry innovation challenge and a showcase of solutions created by KEC students and faculty.</p>
+          </div>
+
+          <div class="hero-cards">
+            <article class="hero-card hero-card-main">
+              <span>THE CONCLAVE</span>
+              <strong>05–06</strong>
+              <p>February 2027</p>
+            </article>
+            <article class="hero-card">
+              <span>CHALLENGE</span>
+              <strong>24H</strong>
+              <p>Industry Innovation Challenge</p>
+            </article>
+            <article class="hero-card">
+              <span>WORKSHOPS</span>
+              <strong>02</strong>
+              <p>Hands-on HPC workshops</p>
+            </article>
+            <article class="hero-card">
+              <span>VENUE</span>
+              <strong>KEC</strong>
+              <p>Kongu Engineering College</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="statement">
+        <div class="section-label">THE IDEA</div>
+        <div class="statement-grid">
+          <h2>Where ideas meet<br /><em>compute.</em></h2>
+          <div>
+            <p>HPC Innovation Conclave 2027 takes place on <strong>Friday, 5 February and Saturday, 6 February 2027</strong> at Kongu Engineering College.</p>
+            <p>The programme moves from keynote and industry leadership discussions into hands-on learning, competitive problem solving and innovation showcase activities.</p>
+            <a class="text-link" href="/aiconclave/about/">Read about the Conclave →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="highlights">
+        <div class="section-head">
+          <div>
+            <span class="section-label">WHAT'S HAPPENING</span>
+            <h2>Four ways to<br /><em>build.</em></h2>
+          </div>
+          <p>One programme, four connected experiences across industry, learning, competition and innovation.</p>
+        </div>
+        <div class="highlight-grid">
+          {highlights.map(([number, title, description], index) => (
+            <article class={`floating-card ${index % 2 === 1 ? 'lifted' : ''}`}>
+              <span class="card-number">{number}</span>
+              <div>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="tracks">
+        <div class="section-head compact">
+          <div>
+            <span class="section-label">THREE TRACKS</span>
+            <h2>Choose how<br /><em>you participate.</em></h2>
+          </div>
+          <a class="text-link" href="/aiconclave/tracks/">View all tracks →</a>
+        </div>
+        <div class="track-grid">
+          {tracks.map(([number, title, who, fee, href], index) => (
+            <a class={`track-card ${index === 1 ? 'dark' : ''} ${index === 2 ? 'lifted' : ''}`} href={href}>
+              <div class="track-top"><span>{number}</span><strong>{fee}</strong></div>
+              <div>
+                <small>{who}</small>
+                <h3>{title}</h3>
+              </div>
+              <span class="arrow">↗</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="event-plan">
+        <div class="section-label">EVENT PLAN</div>
+        <div class="days-grid">
+          <article class="day-card">
+            <span>DAY 01 · 05 FEB</span>
+            <h3>Connect &amp;<br /><em>Explore.</em></h3>
+            <p>Inauguration · HPC Keynote · Industry Leadership Panel · GPU Computing &amp; CUDA · Challenge Launch</p>
+          </article>
+          <article class="day-card lifted">
+            <span>DAY 02 · 06 FEB</span>
+            <h3>Build &amp;<br /><em>Showcase.</em></h3>
+            <p>GenAI &amp; LLMs on HPC · Innovation Showcase · Careers &amp; Certifications · Challenge Evaluation · Closing</p>
+          </article>
+        </div>
+        <a class="text-link" href="/aiconclave/event-plan/">See the complete event plan →</a>
+      </section>
+
+      <section class="closing">
+        <p>HPC INNOVATION CONCLAVE 2027 · 05–06 FEBRUARY</p>
+        <h2>Connect.<br /><em>Compute. Create.</em></h2>
+        <p>Explore the programme and choose your participation track.</p>
+      </section>
+    </main>
+
+    <div class="registration-bar">
+      <div>
+        <span>HPC INNOVATION CONCLAVE 2027</span>
+        <strong>Choose your track</strong>
+      </div>
+      <button class="register-button" id="register-open" type="button">Register <span>↗</span></button>
+    </div>
+
+    <div class="rules-modal" id="rules-modal" aria-hidden="true">
+      <div class="rules-backdrop" data-rules-close></div>
+      <section class="rules-panel" role="dialog" aria-modal="true" aria-labelledby="rules-title">
+        <button class="rules-close" type="button" aria-label="Close" data-rules-close>×</button>
+        <p class="kicker">BEFORE YOU REGISTER</p>
+        <h2 id="rules-title">Rules &amp;<br /><em>constraints.</em></h2>
+        <p class="rules-intro">Please read the participation rules before continuing to the registration and payment page.</p>
+        <div class="rule-list">
+          <div><b>01</b><span>Participation is restricted to <strong>one track only</strong> — Showcase, Challenge, or Workshops.</span></div>
+          <div><b>02</b><span>Cross-participation across tracks is not permitted.</span></div>
+          <div><b>03</b><span>Challenge participants cannot participate in the Hands-on Workshops on either day.</span></div>
+          <div><b>04</b><span>All participants must complete registration in advance and carry valid registration confirmation / ID.</span></div>
+          <div><b>05</b><span>Showcase is for KEC students and faculty and requires a completed / working solution.</span></div>
+          <div><b>06</b><span>The Challenge runs continuously for 24 hours from 2:15 PM on 5 February to 2:15 PM on 6 February.</span></div>
+          <div><b>07</b><span>Workshops cost ₹300 for one workshop or ₹500 for both; participants should bring their own laptop.</span></div>
+          <div><b>08</b><span>Lunch is provided only for participants of the 24-hour Innovation Challenge.</span></div>
+        </div>
+        <div class="countdown-wrap"><span id="countdown">30</span><small>seconds remaining before continuing</small></div>
+        <button id="rules-continue" class="rules-continue" type="button" disabled>Continue to registration <span>→</span></button>
+        <p id="wait-note" class="wait-note">The registration button will unlock after the 30-second review period.</p>
+      </section>
+    </div>
+
+    <script>
+      const modal = document.getElementById('rules-modal');
+      const openButton = document.getElementById('register-open');
+      const continueButton = document.getElementById('rules-continue');
+      const countdown = document.getElementById('countdown');
+      let timer;
+
+      function closeRules() {
+        modal?.setAttribute('aria-hidden', 'true');
+        modal?.classList.remove('ready');
+        document.body.style.overflow = '';
+        clearInterval(timer);
+      }
+
+      openButton?.addEventListener('click', () => {
+        modal?.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        continueButton.disabled = true;
+        countdown.textContent = '30';
+        modal.classList.remove('ready');
+        let remaining = 30;
+        clearInterval(timer);
+        timer = setInterval(() => {
+          remaining -= 1;
+          countdown.textContent = String(remaining);
+          if (remaining <= 0) {
+            clearInterval(timer);
+            continueButton.disabled = false;
+            modal.classList.add('ready');
+            document.getElementById('wait-note').textContent = 'You can now continue to registration.';
+          }
+        }, 1000);
+      });
+
+      document.querySelectorAll('[data-rules-close]').forEach((element) => element.addEventListener('click', closeRules));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeRules();
+      });
+      continueButton?.addEventListener('click', () => {
+        if (!continueButton.disabled) window.location.href = '/aiconclave/registration-details/';
+      });
+    </script>
+  </body>
+</html>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
-:global(*){box-sizing:border-box}:global(body){margin:0;background:#f7f6f2;color:#161616;font-family:"DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;line-height:1.6;padding-top:90px;padding-bottom:105px}.site-header{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:80;width:min(980px,calc(100% - 30px));padding:13px 16px;display:flex;justify-content:center;align-items:center;border:1px solid #d3d0c8;border-radius:16px;background:rgba(255,255,252,.94);backdrop-filter:blur(18px);box-shadow:0 14px 42px rgba(35,35,30,.12)}.site-header nav{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px 22px}.site-header nav a{color:#55524d;text-decoration:none;font-size:14px;font-weight:700;letter-spacing:.025em;white-space:nowrap}.site-header nav a:hover{color:#2f708f}.hero{min-height:79vh;border-bottom:1px solid #d8d6cf;background:radial-gradient(circle at 75% 18%,rgba(49,105,139,.11),transparent 30%),linear-gradient(145deg,#fbfaf7,#f1f0eb 65%,#faf9f5)}.hero-inner{width:min(1180px,calc(100% - 44px));min-height:79vh;margin:auto;padding:38px 0 58px;display:flex;flex-direction:column}.topline{display:flex;justify-content:space-between;border-bottom:1px solid #d7d5ce;padding-bottom:19px;color:#77746e;font-size:13px;font-weight:700;letter-spacing:.14em}.identity-strip{display:flex;justify-content:flex-end;align-items:stretch;gap:0;margin-top:18px}.identity-mark{display:flex;align-items:baseline;gap:10px;padding:7px 18px;border-left:1px solid #d7d5ce}.identity-mark:last-child{padding-right:0}.identity-mark strong{font-size:20px;letter-spacing:-.04em}.identity-mark span{color:#77746e;font-size:12px;text-transform:uppercase;letter-spacing:.07em}.hero-copy{margin:auto 0;padding:58px 0 74px}.kicker,.label{margin:0;color:#31708f;font-size:13px;font-weight:800;letter-spacing:.16em}.hero h1{margin:20px 0 29px;font-size:clamp(76px,11.5vw,165px);line-height:.82;letter-spacing:-.075em;font-weight:800}.hero h1 em,h2 em{color:#2f708f;font-family:Georgia,serif;font-weight:400}.intro{max-width:800px;margin:0;color:#66635d;font-size:clamp(20px,1.8vw,24px);line-height:1.68}.signals{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d7d5ce;padding-top:22px}.signals div{display:flex;flex-direction:column;gap:6px;border-left:1px solid #d7d5ce;padding-left:22px}.signals div:first-child{border-left:0;padding-left:0}.signals strong{font-size:31px;font-weight:800}.signals span{color:#77746e;font-size:13px;text-transform:uppercase;letter-spacing:.08em}.about,.tracks,.plan{width:min(1180px,calc(100% - 44px));margin:auto}.about{padding:115px 0}.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:end;margin-top:34px}.about h2,.plan h2{margin:0;font-size:clamp(47px,6vw,86px);line-height:.94;letter-spacing:-.065em}.about-grid div{border-left:1px solid #d7d5ce;padding-left:28px}.about p,.plan p{color:#66635d;font-size:20px;line-height:1.75}.text-link,.section-head a{color:#2f708f;text-decoration:none;font-size:15px;font-weight:800}.tracks{padding:0 0 115px}.section-head{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid #d0cec7;padding-bottom:20px}.track-list{border-top:0}.track-row{display:grid;grid-template-columns:72px 1fr auto;gap:23px;align-items:center;padding:33px 0;border-bottom:1px solid #d8d6cf;text-decoration:none;color:#161616}.track-row:hover h2{color:#2f708f}.track-row .number{color:#8b8881;font-size:15px}.track-row small{color:#77746e;font-size:13px;text-transform:uppercase;letter-spacing:.08em}.track-row h2{margin:9px 0 0;font-size:clamp(30px,3vw,44px);letter-spacing:-.045em}.track-row strong{color:#2f708f;font-size:16px;font-weight:800}.plan{padding:26px 0 135px;border-top:1px solid #d8d6cf}.plan h2{margin-top:42px}.plan p{max-width:760px}.closing{min-height:58vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-top:1px solid #d8d6cf;padding:90px 22px 125px}.closing p{color:#77746e;font-size:13px;letter-spacing:.13em}.closing h2{margin:23px 0;font-size:clamp(53px,8vw,110px);line-height:.9;letter-spacing:-.065em}.registration-bar{position:fixed;z-index:50;left:50%;bottom:18px;transform:translateX(-50%);width:min(920px,calc(100% - 30px));padding:15px 15px 15px 21px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid #d3d0c8;border-radius:15px;background:rgba(255,255,252,.95);backdrop-filter:blur(18px);box-shadow:0 18px 55px rgba(35,35,30,.14)}.registration-bar>div{display:flex;flex-direction:column;gap:5px}.registration-bar span{color:#31708f;font-size:12px;font-weight:800;letter-spacing:.12em}.registration-bar strong{font-size:16px}.register-button{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:9px;background:#2f708f;color:#fff;text-decoration:none;padding:15px 21px;font-weight:800;font-size:16px;cursor:pointer}.register-button:hover{background:#255e79}.register-button span{margin-left:14px;color:#fff;font-size:16px}.rules-modal{position:fixed;inset:0;z-index:100;display:none}.rules-modal[aria-hidden="false"]{display:block}.rules-backdrop{position:absolute;inset:0;background:rgba(22,22,22,.45);backdrop-filter:blur(9px)}.rules-panel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(740px,calc(100% - 28px));max-height:calc(100vh - 30px);overflow:auto;padding:34px;border:1px solid #d4d1c9;border-radius:18px;background:#fbfaf7;box-shadow:0 30px 100px rgba(30,30,25,.24)}.rules-close{position:absolute;right:16px;top:12px;border:0;background:none;font-size:28px;color:#77746e;cursor:pointer}.rules-panel h2{margin:13px 0;font-size:clamp(44px,7vw,72px);line-height:.88;letter-spacing:-.065em}.rules-intro{max-width:590px;color:#66635d;font-size:16px;line-height:1.65}.rule-list{margin-top:24px;border-top:1px solid #ddd9d1}.rule-list div{display:grid;grid-template-columns:38px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #ddd9d1}.rule-list b{color:#2f708f;font-size:13px}.rule-list span{color:#55524d;font-size:14px;line-height:1.6}.countdown-wrap{display:flex;align-items:center;gap:13px;margin-top:23px;padding:16px;background:#f2f7f9;border:1px solid #d7e2e7}.countdown-wrap span{font-size:31px;font-weight:800;color:#2f708f;min-width:34px}.countdown-wrap small{color:#66635d;font-size:13px}.rules-continue{width:100%;margin-top:12px;border:0;border-radius:9px;padding:16px;background:#2f708f;color:#fff;font-weight:800;font-size:16px;cursor:pointer}.rules-continue:disabled{background:#c9c8c2;color:#88867f;cursor:not-allowed}.rules-continue span{margin-left:15px}.wait-note{margin:10px 0 0;text-align:center;color:#8b8881;font-size:12px}.rules-modal.ready .countdown-wrap{background:#eef6f1;border-color:#c8ded1}.rules-modal.ready .wait-note{color:#2f708f}@media(max-width:850px){.site-header{top:10px;width:calc(100% - 20px);padding:11px 13px;justify-content:flex-start;overflow-x:auto;scrollbar-width:none}.site-header::-webkit-scrollbar{display:none}.site-header nav{justify-content:flex-start;flex-wrap:nowrap;gap:9px 17px;min-width:max-content}.site-header nav a{font-size:13px}.hero-inner,.about,.tracks,.plan{width:min(100% - 30px,1180px)}.identity-strip{justify-content:flex-start}.identity-mark{padding-left:0;padding-right:15px;margin-right:15px}.identity-mark strong{font-size:18px}.identity-mark span{font-size:11px}.signals{grid-template-columns:1fr 1fr;gap:20px 0}.signals div:nth-child(3){border-left:0;padding-left:0}.about-grid{grid-template-columns:1fr;gap:30px}.about-grid div{border-left:0;border-top:1px solid #d7d5ce;padding:22px 0 0}.about p,.plan p{font-size:18px}.track-row{grid-template-columns:35px 1fr}.track-row strong{grid-column:2;font-size:15px}.track-row small{font-size:12px}.registration-bar{bottom:10px;width:calc(100% - 20px);padding-left:15px}.registration-bar span{font-size:10px}.registration-bar strong{font-size:14px}.register-button{padding:13px 16px;font-size:15px}.rules-panel{padding:27px 20px}.rule-list span{font-size:13px}.intro{font-size:18px}}
+:global(*){box-sizing:border-box}:global(body){margin:0;background:#f7f6f2;color:#161616;font-family:"DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;line-height:1.6;padding-top:90px;padding-bottom:105px}.site-header{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:80;width:min(980px,calc(100% - 30px));padding:13px 16px;display:flex;justify-content:center;align-items:center;border:1px solid #d3d0c8;border-radius:16px;background:rgba(255,255,252,.94);backdrop-filter:blur(18px);box-shadow:0 14px 42px rgba(35,35,30,.12)}.site-header nav{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px 22px}.site-header nav a{color:#55524d;text-decoration:none;font-size:14px;font-weight:700;letter-spacing:.025em;white-space:nowrap}.site-header nav a:hover{color:#2f708f}.hero{border-bottom:1px solid #d8d6cf;background:radial-gradient(circle at 76% 17%,rgba(49,105,139,.12),transparent 29%),linear-gradient(145deg,#fbfaf7,#f1f0eb 65%,#faf9f5)}.hero-inner{width:min(1180px,calc(100% - 44px));min-height:calc(100vh - 90px);margin:auto;padding:38px 0 58px;display:flex;flex-direction:column}.topline{display:flex;justify-content:space-between;border-bottom:1px solid #d7d5ce;padding-bottom:19px;color:#77746e;font-size:13px;font-weight:700;letter-spacing:.14em}.identity-strip{display:flex;justify-content:flex-end;align-items:stretch;gap:0;margin-top:18px}.identity-mark{display:flex;align-items:baseline;gap:10px;padding:7px 18px;border-left:1px solid #d7d5ce}.identity-mark:last-child{padding-right:0}.identity-mark strong{font-size:20px;letter-spacing:-.04em}.identity-mark span{color:#77746e;font-size:12px;text-transform:uppercase;letter-spacing:.07em}.hero-copy{margin:auto 0;padding:55px 0 58px}.kicker,.section-label{margin:0;color:#31708f;font-size:13px;font-weight:800;letter-spacing:.16em}.hero h1{margin:20px 0 29px;font-size:clamp(76px,11.5vw,165px);line-height:.82;letter-spacing:-.075em;font-weight:800}.hero h1 em,h2 em,h3 em{color:#2f708f;font-family:Georgia,serif;font-weight:400}.intro{max-width:800px;margin:0;color:#66635d;font-size:clamp(20px,1.8vw,24px);line-height:1.68}.hero-cards{display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr;gap:16px}.hero-card{min-height:150px;padding:21px;border:1px solid #d5d2ca;border-radius:22px;background:rgba(255,255,252,.75);box-shadow:0 16px 38px rgba(35,35,30,.07);display:flex;flex-direction:column;justify-content:space-between}.hero-card-main{background:#eef5f7;border-color:#cbdde3}.hero-card span{color:#31708f;font-size:11px;font-weight:800;letter-spacing:.13em}.hero-card strong{font-size:37px;line-height:1;letter-spacing:-.05em}.hero-card p{margin:0;color:#66635d;font-size:13px}.statement,.highlights,.tracks,.event-plan{width:min(1180px,calc(100% - 44px));margin:auto}.statement{padding:125px 0 110px}.statement-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:85px;align-items:end;margin-top:35px}.statement h2,.section-head h2{margin:0;font-size:clamp(48px,6vw,86px);line-height:.94;letter-spacing:-.065em}.statement-grid>div{border-left:1px solid #d7d5ce;padding-left:28px}.statement p,.section-head>p{color:#66635d;font-size:19px;line-height:1.75}.text-link{color:#2f708f;text-decoration:none;font-size:15px;font-weight:800}.highlights{padding:0 0 120px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:45px;margin-bottom:38px}.section-head>p{max-width:470px;margin:0}.highlight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.floating-card{min-height:250px;padding:30px;border:1px solid #d7d5ce;border-radius:24px;background:#fbfaf7;box-shadow:0 18px 45px rgba(35,35,30,.09);display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s ease,box-shadow .25s ease}.floating-card:hover,.track-card:hover,.day-card:hover{transform:translateY(-7px);box-shadow:0 28px 58px rgba(35,35,30,.14)}.floating-card.lifted{transform:translateY(-9px)}.floating-card.lifted:hover{transform:translateY(-16px)}.card-number{color:#aaa69e;font-size:12px;font-weight:800}.floating-card h3{margin:0;font-size:34px;line-height:1.05;letter-spacing:-.045em}.floating-card p{max-width:520px;margin:12px 0 0;color:#66635d}.tracks{padding:5px 0 120px}.section-head.compact{align-items:end}.track-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.track-card{position:relative;min-height:350px;padding:28px;border:1px solid #d7d5ce;border-radius:25px;background:#fbfaf7;color:#161616;text-decoration:none;box-shadow:0 18px 45px rgba(35,35,30,.09);display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s ease,box-shadow .25s ease}.track-card.lifted{transform:translateY(-10px)}.track-card.lifted:hover{transform:translateY(-17px)}.track-card.dark{background:#171717;color:#f7f6f2;border-color:#171717}.track-top{display:flex;justify-content:space-between;gap:20px}.track-top span{color:#aaa69e;font-size:12px;font-weight:800}.track-top strong{color:#31708f;font-size:12px;text-align:right}.track-card.dark .track-top strong{color:#a8c7d3}.track-card small{color:#77746e;text-transform:uppercase;letter-spacing:.08em;font-size:11px}.track-card.dark small{color:#aaa69e}.track-card h3{margin:13px 0 0;font-size:32px;line-height:1.03;letter-spacing:-.045em}.arrow{align-self:flex-end;font-size:24px;color:#31708f}.event-plan{padding:0 0 125px}.days-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin:38px 0 30px}.day-card{min-height:320px;padding:32px;border:1px solid #d7d5ce;border-radius:25px;background:#fbfaf7;box-shadow:0 18px 45px rgba(35,35,30,.09);display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s ease,box-shadow .25s ease}.day-card.lifted{transform:translateY(-10px)}.day-card.lifted:hover{transform:translateY(-17px)}.day-card>span{color:#31708f;font-size:12px;font-weight:800;letter-spacing:.13em}.day-card h3{margin:35px 0 0;font-size:48px;line-height:.94;letter-spacing:-.06em}.day-card p{max-width:650px;margin:20px 0 0;color:#66635d;font-size:16px;line-height:1.65}.closing{min-height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-top:1px solid #d8d6cf;padding:95px 22px 135px}.closing p{color:#77746e;font-size:13px;letter-spacing:.13em}.closing h2{margin:23px 0;font-size:clamp(53px,8vw,110px);line-height:.9;letter-spacing:-.065em}.registration-bar{position:fixed;z-index:50;left:50%;bottom:18px;transform:translateX(-50%);width:min(920px,calc(100% - 30px));padding:15px 15px 15px 21px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid #d3d0c8;border-radius:15px;background:rgba(255,255,252,.95);backdrop-filter:blur(18px);box-shadow:0 18px 55px rgba(35,35,30,.14)}.registration-bar>div{display:flex;flex-direction:column;gap:5px}.registration-bar span{color:#31708f;font-size:12px;font-weight:800;letter-spacing:.12em}.registration-bar strong{font-size:16px}.register-button{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:9px;background:#2f708f;color:#fff;padding:15px 21px;font-weight:800;font-size:16px;cursor:pointer}.register-button:hover{background:#255e79}.register-button span{margin-left:14px;color:#fff}.rules-modal{position:fixed;inset:0;z-index:100;display:none}.rules-modal[aria-hidden="false"]{display:block}.rules-backdrop{position:absolute;inset:0;background:rgba(22,22,22,.45);backdrop-filter:blur(9px)}.rules-panel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(740px,calc(100% - 28px));max-height:calc(100vh - 30px);overflow:auto;padding:34px;border:1px solid #d4d1c9;border-radius:18px;background:#fbfaf7;box-shadow:0 30px 100px rgba(30,30,25,.24)}.rules-close{position:absolute;right:16px;top:12px;border:0;background:none;font-size:28px;color:#77746e;cursor:pointer}.rules-panel h2{margin:13px 0;font-size:clamp(44px,7vw,72px);line-height:.88;letter-spacing:-.065em}.rules-intro{max-width:590px;color:#66635d;font-size:16px;line-height:1.65}.rule-list{margin-top:24px;border-top:1px solid #ddd9d1}.rule-list div{display:grid;grid-template-columns:38px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #ddd9d1}.rule-list b{color:#2f708f;font-size:13px}.rule-list span{color:#55524d;font-size:14px;line-height:1.6}.countdown-wrap{display:flex;align-items:center;gap:13px;margin-top:23px;padding:16px;background:#f2f7f9;border:1px solid #d7e2e7}.countdown-wrap span{font-size:31px;font-weight:800;color:#2f708f;min-width:34px}.countdown-wrap small{color:#66635d;font-size:13px}.rules-continue{width:100%;margin-top:12px;border:0;border-radius:9px;padding:16px;background:#2f708f;color:#fff;font-weight:800;font-size:16px;cursor:pointer}.rules-continue:disabled{background:#c9c8c2;color:#88867f;cursor:not-allowed}.rules-continue span{margin-left:15px}.wait-note{margin:10px 0 0;text-align:center;color:#8b8881;font-size:12px}.rules-modal.ready .countdown-wrap{background:#eef6f1;border-color:#c8ded1}.rules-modal.ready .wait-note{color:#2f708f}
+@media(max-width:850px){.site-header{top:10px;width:calc(100% - 20px);padding:11px 13px;justify-content:flex-start;overflow-x:auto;scrollbar-width:none}.site-header::-webkit-scrollbar{display:none}.site-header nav{justify-content:flex-start;flex-wrap:nowrap;gap:9px 17px;min-width:max-content}.site-header nav a{font-size:13px}.hero-inner,.statement,.highlights,.tracks,.event-plan{width:min(100% - 30px,1180px)}.topline{font-size:11px;gap:20px}.identity-strip{justify-content:flex-start}.identity-mark{padding-left:0;padding-right:15px;margin-right:15px}.hero-inner{min-height:auto;padding-top:28px}.hero-copy{padding:55px 0}.hero-cards{grid-template-columns:repeat(2,1fr)}.hero-card{min-height:145px}.statement-grid{grid-template-columns:1fr;gap:35px}.statement-grid>div{padding-left:0;border-left:0;padding-top:25px;border-top:1px solid #d7d5ce}.section-head{display:block}.section-head>p{margin-top:18px}.highlight-grid,.track-grid,.days-grid{grid-template-columns:1fr}.floating-card.lifted,.track-card.lifted,.day-card.lifted{transform:none}.floating-card.lifted:hover,.track-card.lifted:hover,.day-card.lifted:hover{transform:translateY(-6px)}.track-card{min-height:290px}.day-card{min-height:270px}.registration-bar{bottom:10px}.registration-bar strong{font-size:14px}.register-button{padding:13px 17px}}
+@media(max-width:520px){:global(body){padding-top:76px;padding-bottom:94px}.topline{display:block}.topline span{display:block}.topline span+span{margin-top:8px}.hero h1{font-size:clamp(68px,21vw,110px)}.intro{font-size:18px}.hero-cards{grid-template-columns:1fr 1fr;gap:12px}.hero-card{padding:18px;min-height:135px}.hero-card strong{font-size:29px}.statement{padding-top:85px}.statement h2,.section-head h2{font-size:52px}.floating-card{min-height:210px;padding:24px}.floating-card h3{font-size:29px}.track-card{min-height:260px;padding:24px}.track-card h3{font-size:29px}.day-card{padding:25px}.day-card h3{font-size:41px}.registration-bar{width:calc(100% - 20px);padding:12px 12px 12px 15px}.registration-bar span{font-size:10px}.registration-bar strong{font-size:13px}.register-button{font-size:14px}.rules-panel{padding:28px 22px}.rule-list div{grid-template-columns:30px 1fr}.rule-list span{font-size:13px}}
 </style>
-<script>
-const modal=document.querySelector('#rules-modal');const open=document.querySelector('#register-open');const closeButtons=modal?.querySelectorAll('[data-rules-close]');const continueButton=document.querySelector('#rules-continue');const countdown=document.querySelector('#countdown');let timer;
-const closeModal=()=>{modal?.setAttribute('aria-hidden','true');if(timer)window.clearInterval(timer)};
-open?.addEventListener('click',()=>{modal?.setAttribute('aria-hidden','false');modal?.classList.remove('ready');continueButton.disabled=true;countdown.textContent='30';let seconds=30;if(timer)window.clearInterval(timer);timer=window.setInterval(()=>{seconds-=1;countdown.textContent=String(seconds);if(seconds<=0){window.clearInterval(timer);modal?.classList.add('ready');continueButton.disabled=false;document.querySelector('#wait-note').textContent='You can now continue to registration and payment.'}},1000)});
-closeButtons?.forEach((button)=>button.addEventListener('click',closeModal));document.addEventListener('keydown',(event)=>{if(event.key==='Escape')closeModal()});continueButton?.addEventListener('click',()=>{window.location.href='/aiconclave/registration-details/'});
-</script>

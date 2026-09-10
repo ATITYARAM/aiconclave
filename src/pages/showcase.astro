@@ -83,25 +83,25 @@ import ConclavePage from '../layouts/ConclavePage.astro';
 
 <style>
   .hero-cards{display:grid;grid-template-columns:1.4fr .8fr;gap:24px;margin-bottom:100px}
-  .floating-card{background:#fbfaf7;border:1px solid #d7d5ce;border-radius:24px;padding:42px;box-shadow:0 22px 55px rgba(35,35,30,.1);transition:transform .25s ease,box-shadow .25s ease}
-  .floating-card:hover{transform:translateY(-6px);box-shadow:0 30px 65px rgba(35,35,30,.14)}
-  .floating-card.accent{background:#eef5f7;border-color:#cbdde3}
-  .card-label{display:block;color:#31708f;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+  .floating-card{background:#12171f;border:1px solid #232b36;border-radius:24px;padding:42px;box-shadow:0 22px 55px rgba(0,0,0,.42);transition:transform .25s ease,box-shadow .25s ease}
+  .floating-card:hover{transform:translateY(-6px);box-shadow:0 30px 65px rgba(0,0,0,.42)}
+  .floating-card.accent{background:#11242d;border-color:#1d3a44}
+  .card-label{display:block;color:#3fd2c4;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
   .floating-card h2{margin:18px 0 12px;font-size:clamp(38px,5vw,68px);line-height:.95;letter-spacing:-.055em}
   .floating-card p{margin:0}
-  .flow-section{padding:90px 0;border-top:1px solid #d7d5ce}
+  .flow-section{padding:90px 0;border-top:1px solid #232b36}
   .section-heading h2,.award-intro h2{margin:16px 0 45px;font-size:clamp(42px,6vw,76px);line-height:.94;letter-spacing:-.06em}
   .timeline{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  .timeline-card{display:grid;grid-template-columns:58px 1fr;gap:22px;padding:30px;background:#fbfaf7;border:1px solid #d7d5ce;border-radius:20px;box-shadow:0 12px 32px rgba(35,35,30,.06)}
-  .step{font-size:13px;color:#8b8881;font-weight:700}
-  .timeline-card small{color:#31708f;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .timeline-card{display:grid;grid-template-columns:58px 1fr;gap:22px;padding:30px;background:#12171f;border:1px solid #232b36;border-radius:20px;box-shadow:0 12px 32px rgba(0,0,0,.42)}
+  .step{font-size:13px;color:#68727e;font-weight:700}
+  .timeline-card small{color:#3fd2c4;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
   .timeline-card h3{margin:10px 0 8px;font-size:27px;letter-spacing:-.035em}
   .timeline-card p{margin:0;font-size:16px}
-  .awards{padding:90px 0 20px;border-top:1px solid #d7d5ce}
+  .awards{padding:90px 0 20px;border-top:1px solid #232b36}
   .award-intro h2{margin-bottom:35px}
   .award-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-  .award-card{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:32px;background:#fbfaf7;border:1px solid #d7d5ce;border-radius:20px;box-shadow:0 18px 45px rgba(35,35,30,.08)}
+  .award-card{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:32px;background:#12171f;border:1px solid #232b36;border-radius:20px;box-shadow:0 18px 45px rgba(0,0,0,.42)}
   .award-card span{font-size:18px;font-weight:700}
-  .award-card strong{font-size:36px;letter-spacing:-.04em;color:#31708f;white-space:nowrap}
+  .award-card strong{font-size:36px;letter-spacing:-.04em;color:#3fd2c4;white-space:nowrap}
   @media(max-width:760px){.hero-cards,.timeline,.award-cards{grid-template-columns:1fr}.floating-card{padding:30px}.flow-section,.awards{padding:65px 0}.timeline-card{grid-template-columns:38px 1fr}.award-card{align-items:flex-start;flex-direction:column}.award-card strong{font-size:32px}}
 </style>

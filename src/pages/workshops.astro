@@ -91,7 +91,7 @@ const rules = [
   .workshop-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px;
+    gap: 30px;
   }
 
   .workshop-card {
@@ -99,19 +99,26 @@ const rules = [
     overflow: hidden;
     min-height: 390px;
     padding: 30px 32px 34px;
-    border: 1px solid #d9e1eb;
-    border-radius: 22px;
-    background: linear-gradient(145deg, #ffffff 0%, #fbfcff 100%);
-    box-shadow: 0 16px 42px rgba(39, 58, 82, 0.07);
+    border: 1px solid rgba(217, 225, 235, 0.95);
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 24px 60px rgba(39, 58, 82, 0.12), 0 5px 18px rgba(39, 58, 82, 0.06);
+    transform: translateY(0);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+  }
+
+  .workshop-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 34px 72px rgba(39, 58, 82, 0.16), 0 8px 24px rgba(39, 58, 82, 0.08);
   }
 
   .workshop-card::after {
     content: '';
     position: absolute;
-    right: -65px;
-    bottom: -95px;
-    width: 230px;
-    height: 180px;
+    right: -55px;
+    bottom: -75px;
+    width: 210px;
+    height: 170px;
     border-radius: 50% 0 0 0;
     background: linear-gradient(135deg, rgba(77, 124, 255, 0.08), rgba(108, 77, 255, 0.18));
     pointer-events: none;
@@ -323,7 +330,11 @@ const rules = [
     .workshop-card {
       min-height: auto;
       padding: 24px;
-      border-radius: 18px;
+      border-radius: 20px;
+    }
+
+    .workshop-card:hover {
+      transform: translateY(-5px);
     }
 
     .workshop-card h2 {
@@ -343,6 +354,12 @@ const rules = [
 
     .rules-heading {
       align-items: flex-start;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .workshop-card {
+      transition: none;
     }
   }
 </style>

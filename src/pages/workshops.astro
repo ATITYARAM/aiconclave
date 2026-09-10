@@ -1,8 +1,42 @@
 ---
 import ConclavePage from '../layouts/ConclavePage.astro';
-const workshops=[['01','GPU Computing & CUDA','05 Feb · Friday · 2:15–4:15 PM'],['02','Generative AI & LLMs on HPC','06 Feb · Saturday · 9:00 AM–12:30 PM']];
+
+const workshops = [
+  ['01', 'GPU Computing & CUDA', '05 Feb · Friday · 2:15–4:15 PM'],
+  ['02', 'Generative AI & LLMs on HPC', '06 Feb · Saturday · 9:00 AM–12:30 PM']
+];
 ---
-<ConclavePage title="Workshops" eyebrow="Track 03 · Workshops" heading="Learn by running it." intro="Two hands-on computing workshops cover GPU programming and the use of Generative AI and LLMs on HPC.">
-  <div class="big-list">{workshops.map(([num,title,time])=><div class="row"><span class="num">{num}</span><div><h3>{title}</h3><p>{time}</p></div><strong class="fee">₹300</strong></div>)}</div>
-  <div class="rules"><strong>Workshop fees</strong><span>One workshop: ₹300 · Both workshops: ₹500.</span><span>Bring your own laptop for hands-on workshops unless informed otherwise.</span><span>Workshop participation is a separate track; cross-participation with the Challenge or Showcase is not permitted.</span></div>
+
+<ConclavePage
+  title="Workshops"
+  eyebrow="Track 03 · Hands-on Workshops"
+  heading="Hands-on Workshops"
+  intro="A skill-development programme with two paid workshops: GPU Computing & CUDA and Generative AI & LLMs on HPC."
+>
+  <div class="big-list">
+    {workshops.map(([num, title, time]) => (
+      <div class="row">
+        <span class="num">{num}</span>
+        <div>
+          <h3>{title}</h3>
+          <p>{time}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="rules">
+    <strong>Registration fees</strong>
+    <span>One workshop — ₹300</span>
+    <span>Both workshops — ₹500</span>
+  </div>
+
+  <div class="rules">
+    <strong>Workshop participation</strong>
+    <span>Open to general registered participants.</span>
+    <span>Challenge participants cannot participate in the Hands-on Workshops.</span>
+    <span>Participants should attend the workshop start promptly, as hands-on exercises build sequentially.</span>
+    <span>Bring your own laptop unless informed otherwise by the organizing committee.</span>
+    <span>Seats may be limited; prior registration is recommended.</span>
+  </div>
 </ConclavePage>

@@ -1,0 +1,89 @@
+---
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Details · HPC Innovation Conclave 2027</title>
+  <meta name="description" content="Registration details and payment for HPC Innovation Conclave 2027." />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/aiconclave/">HPC INNOVATION CONCLAVE 2027</a>
+    <a class="back" href="/aiconclave/">← Back to Conclave</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">REGISTRATION DETAILS</p>
+      <h1>Complete your<br /><em>registration.</em></h1>
+      <p class="intro">Choose your approved participation track, enter your details, and continue to payment. Payment processing will be connected to Cashfree after the merchant backend is configured.</p>
+    </section>
+
+    <section class="registration-card">
+      <div class="notice"><strong>Track rule</strong><span>You may register for one track only. Challenge participants cannot register for the Hands-on Workshops.</span></div>
+
+      <form id="registration-form">
+        <div class="section-title"><span>01</span><h2>Participant details</h2></div>
+        <div class="fields">
+          <label>Full name *<input name="name" required autocomplete="name" placeholder="Full name" /></label>
+          <label>Email *<input name="email" type="email" required autocomplete="email" placeholder="Email address" /></label>
+          <label>Mobile number *<input name="phone" type="tel" required autocomplete="tel" placeholder="10-digit mobile number" /></label>
+          <label>Institution / Organisation *<input name="institution" required placeholder="Institution or organisation" /></label>
+          <label>City<input name="city" placeholder="City" /></label>
+          <label>Participant type *<select name="participantType" required><option value="">Select type</option><option>Student</option><option>Faculty</option><option>Researcher</option><option>Industry Professional</option><option>Startup / Founder</option><option>Other</option></select></label>
+        </div>
+
+        <div class="section-title track-title"><span>02</span><h2>Choose one track</h2></div>
+        <div class="tracks">
+          <label class="track"><input type="radio" name="track" value="showcase" required /><span class="radio"></span><span><b>HPC Industry Innovation Showcase</b><small>KEC students &amp; faculty · Free</small></span></label>
+          <label class="track"><input type="radio" name="track" value="challenge" /><span class="radio"></span><span><b>HPC Industry Innovation Challenge</b><small>24-hour challenge · Free / nominal registration cost</small></span></label>
+          <label class="track"><input type="radio" name="track" value="workshops" /><span class="radio"></span><span><b>Hands-on Workshops</b><small>₹300 one workshop · ₹500 both workshops</small></span></label>
+        </div>
+
+        <div id="workshop-options" class="workshop-options" hidden>
+          <p class="eyebrow">WORKSHOP SELECTION</p>
+          <label><input type="checkbox" name="workshops" value="cuda" /> GPU Computing &amp; CUDA — Day 1</label>
+          <label><input type="checkbox" name="workshops" value="genai" /> Generative AI &amp; LLMs on HPC — Day 2</label>
+        </div>
+
+        <div id="challenge-options" class="challenge-options" hidden>
+          <p class="eyebrow">CHALLENGE DETAILS</p>
+          <label>Team name *<input name="teamName" placeholder="Team name" /></label>
+          <p>Challenge Briefing &amp; Rules is mandatory before development begins. The challenge runs continuously from 2:15 PM on 5 February to 2:15 PM on 6 February.</p>
+        </div>
+
+        <label class="consent"><input type="checkbox" required /> <span>I have read the participation rules and confirm that my selected track is correct.</span></label>
+        <button class="pay" type="submit">Continue to payment <span>→</span></button>
+        <p id="status" class="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
+<style>
+:global(*){box-sizing:border-box}:global(body){margin:0;background:#f7f6f2;color:#161616;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.site-header{width:min(1180px,calc(100% - 44px));margin:auto;padding:25px 0 20px;border-bottom:1px solid #d7d5ce;display:flex;justify-content:space-between;align-items:center}.brand,.back{color:#161616;text-decoration:none;font-size:12px;font-weight:850;letter-spacing:.12em}.back{color:#68655f;letter-spacing:.03em}.hero{width:min(1180px,calc(100% - 44px));margin:auto;padding:105px 0 80px}.eyebrow{margin:0;color:#31708f;font-size:11px;font-weight:850;letter-spacing:.18em}.hero h1{margin:18px 0 25px;font-size:clamp(65px,9vw,130px);line-height:.86;letter-spacing:-.075em}.hero h1 em{color:#2f708f;font-family:Georgia,serif;font-weight:400}.intro{max-width:750px;color:#66635d;font-size:18px;line-height:1.7}.registration-card{width:min(920px,calc(100% - 44px));margin:0 auto 130px;padding:38px;border:1px solid #d3d0c8;border-radius:18px;background:#fbfaf7;box-shadow:0 18px 60px rgba(35,35,30,.08)}.notice{padding:18px 20px;margin-bottom:35px;border-left:3px solid #2f708f;background:#f2f7f9}.notice strong{display:block;font-size:14px;margin-bottom:5px}.notice span{color:#66635d;font-size:14px;line-height:1.6}.section-title{display:flex;gap:17px;align-items:baseline;border-bottom:1px solid #ddd9d1;padding-bottom:14px;margin-bottom:22px}.section-title>span{color:#2f708f;font-size:11px;font-weight:850}.section-title h2{margin:0;font-size:28px;letter-spacing:-.04em}.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}.fields label,.challenge-options label{font-size:11px;font-weight:750;color:#55524d}input,select{display:block;width:100%;margin-top:7px;border:1px solid #d3d0c8;border-radius:9px;background:#fffefa;color:#20201e;padding:13px;outline:none;font:inherit}input:focus,select:focus{border-color:#2f708f}.track-title{margin-top:42px}.tracks{display:grid;gap:10px}.track{display:flex;gap:13px;align-items:flex-start;padding:16px;border:1px solid #d7d4cc;border-radius:10px;background:#fffefa;cursor:pointer}.track:has(input:checked){border-color:#2f708f;background:#f2f7f9}.track input{display:none}.radio{width:17px;height:17px;flex:0 0 17px;border:1px solid #aaa69e;border-radius:50%;margin-top:2px}.track:has(input:checked) .radio{border:5px solid #2f708f}.track b,.track small{display:block}.track b{font-size:13px}.track small{margin-top:4px;color:#77746e;font-size:11px}.workshop-options,.challenge-options{margin-top:18px;padding:20px;border:1px solid #d7d4cc;background:#f8f7f3;border-radius:10px}.workshop-options label{display:block;margin-top:11px;font-size:13px;color:#55524d}.workshop-options input{display:inline;width:auto;margin:0 8px 0 0}.challenge-options p{color:#66635d;font-size:13px;line-height:1.65}.consent{display:flex;gap:10px;align-items:flex-start;margin:28px 0;color:#77746e;font-size:12px;line-height:1.6}.consent input{width:16px;height:16px;flex:0 0 16px;margin:0}.pay{border:0;border-radius:9px;background:#2f708f;color:white;padding:15px 20px;font-size:14px;font-weight:850;cursor:pointer}.pay span{margin-left:18px}.status{min-height:20px;color:#31708f;font-size:12px}.status.error{color:#a13e3e}@media(max-width:700px){.site-header,.hero{width:calc(100% - 30px)}.site-header{align-items:flex-start;gap:12px;flex-direction:column}.hero{padding:75px 0 55px}.registration-card{width:calc(100% - 30px);padding:22px;margin-bottom:80px}.fields{grid-template-columns:1fr}.hero h1{font-size:clamp(56px,16vw,95px)}}
+</style>
+<script>
+  const form = document.querySelector('#registration-form');
+  const status = document.querySelector('#status');
+  const workshopOptions = document.querySelector('#workshop-options');
+  const challengeOptions = document.querySelector('#challenge-options');
+  const trackInputs = document.querySelectorAll('input[name="track"]');
+  const workshopInputs = document.querySelectorAll('input[name="workshops"]');
+
+  trackInputs.forEach((input) => input.addEventListener('change', () => {
+    const workshops = input.value === 'workshops' && input.checked;
+    const challenge = input.value === 'challenge' && input.checked;
+    workshopOptions.hidden = !workshops;
+    challengeOptions.hidden = !challenge;
+    document.querySelector('input[name="teamName"]')?.toggleAttribute('required', challenge);
+    workshopInputs.forEach((item) => item.required = workshops);
+  }));
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    status.textContent = 'Your details are ready. Cashfree payment will be enabled here after the secure order API is connected.';
+  });
+</script>

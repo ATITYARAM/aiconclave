@@ -1,7 +1,447 @@
 ---
 import ConclavePage from '../layouts/ConclavePage.astro';
+
+const timeline = [
+  ['01', 'Briefing & Rules', '05 February · 2:00–2:15 PM', 'Mandatory for all participating teams'],
+  ['02', 'Development Begins', '05 February · 2:15 PM', 'The 24-hour challenge starts'],
+  ['03', 'Challenge Continues', '05–06 February', 'Development runs continuously for 24 hours'],
+  ['04', 'Final Submission & Evaluation', '06 February · 2:30–3:15 PM', 'Must be completed before Valedictory & Closing']
+];
+
+const prizes = [
+  ['₹20,000', 'First Prize'],
+  ['₹10,000', 'Second Prize'],
+  ['₹5,000', 'Third Prize']
+];
 ---
-<ConclavePage title="Challenge" eyebrow="Track 02 · Challenge" heading="Solve a real industry problem." intro="A 24-hour HPC Industry Innovation Challenge where registered teams work continuously on a given industry problem statement.">
-  <div class="grid"><div class="card"><small>Start</small><h3>05 Feb · 2:15 PM</h3><p>Challenge briefing and rules begin at 2:00 PM; development starts at 2:15 PM.</p></div><div class="card"><small>Finish</small><h3>06 Feb · before 3:15 PM</h3><p>Final submission and evaluation are completed before the valedictory.</p></div><div class="card"><small>Prize pool</small><h3>₹35,000</h3><p>First ₹20,000 · Second ₹10,000 · Third ₹5,000.</p></div><div class="card"><small>Participation</small><h3>Free / nominal cost</h3><p>Registered challenge teams and external participants. Team name can be supplied during registration.</p></div></div>
-  <div class="rules"><strong>Important</strong><span>Challenge participants cannot participate in the workshops. The challenge runs continuously after development begins. Lunch is provided only for participants of the 24-hour Innovation Challenge.</span></div>
+
+<ConclavePage
+  title="Challenge"
+  eyebrow="Track 02 · HPC Industry Innovation Challenge"
+  heading="24-Hour Innovation Challenge"
+  intro="Registered challenge teams, including external participants, work continuously on an industry problem statement."
+>
+  <section class="challenge-hero" aria-label="Challenge overview">
+    <div class="hero-stat">
+      <span>CHALLENGE DURATION</span>
+      <strong>24 HOURS</strong>
+      <p>05 Feb · 2:15 PM → 06 Feb · 2:15 PM</p>
+    </div>
+    <div class="hero-stat accent">
+      <span>REGISTRATION</span>
+      <strong>FREE / NOMINAL</strong>
+      <p>Open to registered challenge teams, including external participants.</p>
+    </div>
+  </section>
+
+  <section class="timeline" aria-label="Challenge timeline">
+    <div class="section-heading">
+      <span class="panel-label">THE FLOW</span>
+      <h2>From briefing to evaluation.</h2>
+    </div>
+
+    <div class="timeline-list">
+      {timeline.map(([number, title, time, description]) => (
+        <article class="timeline-item">
+          <span class="timeline-number">{number}</span>
+          <div class="timeline-content">
+            <span class="timeline-time">{time}</span>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="problem-panel">
+    <div>
+      <span class="panel-label">INDUSTRY PROBLEM</span>
+      <h2>The problem statement is released at least 10 days before the event.</h2>
+    </div>
+    <div class="release-mark">10<br /><span>DAYS</span></div>
+  </section>
+
+  <section class="prize-section" aria-label="Challenge prizes">
+    <div class="section-heading">
+      <span class="panel-label">PRIZE POOL · ₹35,000</span>
+      <h2>Compete. Build. Win.</h2>
+    </div>
+
+    <div class="prize-grid">
+      {prizes.map(([amount, label], index) => (
+        <article class={`prize-card prize-${index + 1}`}>
+          <span class="prize-rank">0{index + 1}</span>
+          <strong>{amount}</strong>
+          <span>{label}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="rules-panel" aria-label="Challenge rules">
+    <div class="rules-heading">
+      <span class="info-mark">!</span>
+      <div>
+        <span class="panel-label">IMPORTANT</span>
+        <h2>Challenge rules</h2>
+      </div>
+    </div>
+    <ul>
+      <li>Challenge Briefing & Rules from 2:00–2:15 PM on Day 1 is mandatory before development begins.</li>
+      <li>Final submission and evaluation must be completed before the 3:15 PM Valedictory & Closing.</li>
+      <li>No submissions will be accepted after the final deadline.</li>
+      <li>Challenge participants cannot take part in the Hands-on Workshops on either day.</li>
+      <li>Lunch is provided only for participants of the 24-hour Innovation Challenge.</li>
+    </ul>
+  </section>
 </ConclavePage>
+
+<style>
+  .challenge-hero {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .hero-stat {
+    position: relative;
+    overflow: hidden;
+    padding: 34px;
+    border: 1px solid #d9e1eb;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #ffffff, #f8fbff);
+    box-shadow: 0 18px 48px rgba(39, 58, 82, 0.08);
+  }
+
+  .hero-stat::after {
+    content: '';
+    position: absolute;
+    right: -55px;
+    bottom: -75px;
+    width: 190px;
+    height: 150px;
+    border-radius: 50% 0 0 0;
+    background: rgba(62, 116, 255, 0.12);
+  }
+
+  .hero-stat.accent {
+    background: linear-gradient(145deg, #fbf9ff, #f5f0ff);
+    border-color: #e1d8f6;
+  }
+
+  .hero-stat.accent::after {
+    background: rgba(108, 72, 226, 0.12);
+  }
+
+  .hero-stat span,
+  .panel-label {
+    color: #52627a;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .16em;
+  }
+
+  .hero-stat strong {
+    display: block;
+    margin: 18px 0 8px;
+    color: #17213a;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: .95;
+    letter-spacing: -.06em;
+  }
+
+  .hero-stat.accent strong {
+    color: #5b34c7;
+  }
+
+  .hero-stat p {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    color: #56647a;
+    font-size: 16px;
+  }
+
+  .timeline,
+  .prize-section {
+    margin-top: 82px;
+  }
+
+  .section-heading h2 {
+    margin: 8px 0 30px;
+    color: #17213a;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: .98;
+    letter-spacing: -.06em;
+  }
+
+  .timeline-list {
+    border-top: 1px solid #d9e1eb;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 76px 1fr;
+    gap: 20px;
+    padding: 25px 0;
+    border-bottom: 1px solid #d9e1eb;
+  }
+
+  .timeline-number {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 40px;
+    border-radius: 13px;
+    background: #edf3ff;
+    color: #1748c5;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .timeline-content {
+    display: grid;
+    grid-template-columns: minmax(180px, .8fr) minmax(220px, 1fr) minmax(230px, 1.2fr);
+    align-items: center;
+    gap: 20px;
+  }
+
+  .timeline-time {
+    color: #52627a;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .timeline-content h3 {
+    margin: 0;
+    color: #17213a;
+    font-size: 23px;
+    letter-spacing: -.035em;
+  }
+
+  .timeline-content p {
+    margin: 0;
+    font-size: 15px;
+  }
+
+  .problem-panel {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 30px;
+    align-items: center;
+    margin-top: 26px;
+    padding: 30px 34px;
+    border: 1px solid #d9e1eb;
+    border-radius: 24px;
+    background: #ffffff;
+  }
+
+  .problem-panel h2 {
+    max-width: 820px;
+    margin: 8px 0 0;
+    color: #17213a;
+    font-size: clamp(24px, 3vw, 37px);
+    line-height: 1.08;
+    letter-spacing: -.045em;
+  }
+
+  .release-mark {
+    display: grid;
+    place-items: center;
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    background: #f0eaff;
+    color: #5930c7;
+    font-size: 31px;
+    font-weight: 800;
+    line-height: .85;
+    text-align: center;
+  }
+
+  .release-mark span {
+    font-size: 10px;
+    letter-spacing: .15em;
+  }
+
+  .prize-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .prize-card {
+    position: relative;
+    display: grid;
+    min-height: 210px;
+    align-content: end;
+    padding: 26px;
+    border: 1px solid #d9e1eb;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #ffffff, #f8fbff);
+    box-shadow: 0 15px 40px rgba(39, 58, 82, 0.07);
+  }
+
+  .prize-1 {
+    background: linear-gradient(145deg, #fffdf4, #fff8df);
+    border-color: #eee0aa;
+  }
+
+  .prize-2 {
+    background: linear-gradient(145deg, #f8fbff, #eef5ff);
+  }
+
+  .prize-3 {
+    background: linear-gradient(145deg, #fbf8ff, #f3edff);
+    border-color: #e2d7f6;
+  }
+
+  .prize-rank {
+    position: absolute;
+    top: 22px;
+    right: 24px;
+    color: #69768b;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+  }
+
+  .prize-card strong {
+    color: #17213a;
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: .95;
+    letter-spacing: -.06em;
+  }
+
+  .prize-card > span:last-child {
+    margin-top: 8px;
+    color: #56647a;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .rules-panel {
+    margin-top: 26px;
+    padding: 30px 32px 32px;
+    border: 1px solid #d9e1eb;
+    border-radius: 22px;
+    background: #ffffff;
+  }
+
+  .rules-heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .rules-heading h2 {
+    margin: 5px 0 0;
+    color: #17213a;
+    font-size: clamp(27px, 3vw, 38px);
+    line-height: 1;
+    letter-spacing: -.045em;
+  }
+
+  .info-mark {
+    display: grid;
+    flex: 0 0 52px;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #fff0f0;
+    color: #bd3434;
+    font-size: 23px;
+    font-weight: 800;
+  }
+
+  .rules-panel ul {
+    display: grid;
+    gap: 13px;
+    margin: 27px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rules-panel li {
+    position: relative;
+    padding-left: 32px;
+    color: #34415a;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .rules-panel li::before {
+    content: '•';
+    position: absolute;
+    left: 5px;
+    top: 0;
+    color: #1748c5;
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  @media (max-width: 760px) {
+    .challenge-hero,
+    .prize-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-stat {
+      padding: 26px;
+      border-radius: 19px;
+    }
+
+    .hero-stat strong {
+      font-size: 43px;
+    }
+
+    .timeline,
+    .prize-section {
+      margin-top: 58px;
+    }
+
+    .timeline-item {
+      grid-template-columns: 45px 1fr;
+      gap: 14px;
+    }
+
+    .timeline-number {
+      width: 42px;
+      height: 36px;
+    }
+
+    .timeline-content {
+      grid-template-columns: 1fr;
+      gap: 5px;
+    }
+
+    .timeline-content h3 {
+      font-size: 21px;
+    }
+
+    .problem-panel {
+      padding: 25px;
+      grid-template-columns: 1fr;
+    }
+
+    .release-mark {
+      width: 88px;
+      height: 88px;
+    }
+
+    .prize-card {
+      min-height: 170px;
+    }
+
+    .rules-panel {
+      padding: 24px;
+      border-radius: 18px;
+    }
+
+    .rules-heading {
+      align-items: flex-start;
+    }
+  }
+</style>

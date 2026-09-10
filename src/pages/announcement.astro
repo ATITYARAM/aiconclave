@@ -1,9 +1,81 @@
 ---
 import ConclavePage from '../layouts/ConclavePage.astro';
 ---
-<ConclavePage title="Announcement" eyebrow="Announcement" heading="Something new is being built." intro="HPC Innovation Conclave 2027 brings industry, academia and students together around high-performance computing, innovation and practical problem solving.">
-  <div class="label">THE ANNOUNCEMENT</div><h2>Connect · Compute · Create · Showcase.</h2>
-  <p>The conclave will be held on <strong>Friday, 5 February and Saturday, 6 February 2027</strong> at Kongu Engineering College.</p>
-  <p>The programme combines industry leadership, hands-on HPC workshops, a 24-hour industry innovation challenge and an innovation showcase by KEC students and faculty.</p>
-  <div class="rules"><strong>Registration</strong><span>Choose one participation track when registering. Workshop participants can select one or both workshops according to the published fee structure.</span></div>
+
+<ConclavePage
+  title="Announcement"
+  eyebrow="Announcement"
+  heading="Something new is being built."
+  intro="HPC Innovation Conclave 2027 brings industry, academia and students together around high-performance computing, innovation and practical problem solving."
+>
+  <section class="announcement-lead">
+    <span class="label">THE ANNOUNCEMENT</span>
+    <h2>Connect · Compute · Create · Showcase.</h2>
+    <p>The programme brings together industry leadership, practical HPC learning, innovation and student-faculty participation across two days.</p>
+  </section>
+
+  <section class="date-grid" aria-label="Event details">
+    <article class="info-card featured">
+      <span class="card-label">05 FEB</span>
+      <h3>Friday</h3>
+      <p>The first day of the Conclave.</p>
+    </article>
+    <article class="info-card lifted">
+      <span class="card-label">06 FEB</span>
+      <h3>Saturday</h3>
+      <p>The second day of the Conclave.</p>
+    </article>
+    <article class="info-card venue">
+      <span class="card-label">VENUE</span>
+      <h3>Kongu Engineering College</h3>
+      <p>KEC · 5–6 February 2027</p>
+    </article>
+  </section>
+
+  <section class="programme">
+    <div class="section-head">
+      <span class="label">THE PROGRAMME</span>
+      <p>Four connected parts shape the Conclave experience.</p>
+    </div>
+
+    <div class="programme-grid">
+      <article class="programme-card">
+        <span>01</span>
+        <h3>Industry Leadership</h3>
+        <p>Industry leadership is part of the Conclave programme.</p>
+      </article>
+      <article class="programme-card lifted">
+        <span>02</span>
+        <h3>Hands-on HPC Workshops</h3>
+        <p>Practical workshops form a core part of the programme.</p>
+      </article>
+      <article class="programme-card">
+        <span>03</span>
+        <h3>24-hour Industry Innovation Challenge</h3>
+        <p>A dedicated 24-hour challenge for registered participants.</p>
+      </article>
+      <article class="programme-card lifted">
+        <span>04</span>
+        <h3>Innovation Showcase</h3>
+        <p>KEC students and faculty present their innovations.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="registration-card">
+    <span class="label">REGISTRATION</span>
+    <h2>Choose your participation track.</h2>
+    <div class="registration-copy">
+      <p>Choose one participation track when registering. Workshop participants can select one or both workshops according to the published fee structure.</p>
+      <strong>One track · One registration</strong>
+    </div>
+  </section>
 </ConclavePage>
+
+<style>
+  .announcement-lead{padding-bottom:70px;border-bottom:1px solid #d7d5ce}.announcement-lead h2{max-width:900px;margin:18px 0 18px;font-size:clamp(42px,6vw,82px);line-height:.96;letter-spacing:-.065em}.announcement-lead p{max-width:680px;margin:0;font-size:17px;line-height:1.7;color:#5f5d57}
+  .date-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:55px 0 115px}.info-card,.programme-card{border:1px solid #d7d5ce;border-radius:24px;background:#fbfaf7;box-shadow:0 18px 45px rgba(35,35,30,.09);transition:transform .25s ease,box-shadow .25s ease}.info-card{min-height:230px;padding:30px;display:flex;flex-direction:column;justify-content:space-between}.info-card:hover,.programme-card:hover{transform:translateY(-7px);box-shadow:0 28px 58px rgba(35,35,30,.14)}.info-card.featured{background:#eef5f7;border-color:#cbdde3}.info-card.lifted{transform:translateY(-9px)}.info-card.lifted:hover{transform:translateY(-16px)}.card-label{font-size:12px;font-weight:800;letter-spacing:.13em;color:#31708f}.info-card h3{margin:20px 0 0;font-size:36px;line-height:1;letter-spacing:-.045em}.info-card.venue h3{font-size:30px}.info-card p{margin:12px 0 0;color:#66635d;line-height:1.5}
+  .programme{margin-bottom:105px}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:35px;margin-bottom:35px}.section-head p{max-width:470px;margin:0;color:#66635d}.programme-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.programme-card{min-height:230px;padding:30px;display:flex;flex-direction:column;justify-content:space-between}.programme-card.lifted{transform:translateY(-8px)}.programme-card.lifted:hover{transform:translateY(-15px)}.programme-card>span{font-size:12px;font-weight:800;color:#aaa69e}.programme-card h3{max-width:520px;margin:30px 0 0;font-size:30px;line-height:1.05;letter-spacing:-.045em}.programme-card p{max-width:520px;margin:12px 0 0;color:#66635d;line-height:1.5}
+  .registration-card{padding:45px;border-radius:26px;background:#161616;color:#f7f6f2;box-shadow:0 22px 55px rgba(0,0,0,.12)}.registration-card .label{color:#a8c7d3}.registration-card h2{max-width:760px;margin:15px 0 28px;color:#f7f6f2;font-size:clamp(38px,5vw,65px);line-height:.95;letter-spacing:-.055em}.registration-copy{display:flex;justify-content:space-between;gap:40px;align-items:flex-end}.registration-copy p{max-width:650px;margin:0;color:#c7c5bf;line-height:1.65}.registration-copy strong{font-size:13px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;color:#f7f6f2}
+  @media(max-width:760px){.announcement-lead{padding-bottom:50px}.date-grid{grid-template-columns:1fr;gap:16px;margin:40px 0 75px}.info-card{min-height:180px}.info-card.lifted{transform:none}.info-card.lifted:hover{transform:translateY(-6px)}.section-head{display:block}.section-head p{margin-top:12px}.programme-grid{grid-template-columns:1fr;gap:16px}.programme-card{min-height:190px}.programme-card.lifted{transform:none}.programme-card.lifted:hover{transform:translateY(-6px)}.registration-card{padding:30px}.registration-copy{display:block}.registration-copy strong{display:block;margin-top:22px;white-space:normal}}
+</style>

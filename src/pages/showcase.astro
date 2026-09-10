@@ -1,7 +1,107 @@
 ---
 import ConclavePage from '../layouts/ConclavePage.astro';
 ---
-<ConclavePage title="Showcase" eyebrow="Track 01 · Showcase" heading="Show what you built." intro="The HPC Industry Innovation Showcase is for KEC students and faculty to demonstrate completed or working solutions.">
-  <div class="grid"><div class="card"><small>Who can participate</small><h3>KEC students &amp; faculty</h3><p>This track is specifically for the KEC community.</p></div><div class="card"><small>Participation</small><h3>Free</h3><p>Present a completed / working innovation and engage with visitors and jury members.</p></div></div>
-  <div class="rules"><strong>Showcase flow</strong><span>Setup and preparation begin on Day 2, followed by Session I from 10:30 AM–12:30 PM and Session II from 1:30–2:30 PM. Final interaction and recognition happen before the closing.</span></div>
+
+<ConclavePage
+  title="Showcase"
+  eyebrow="Track 01 · HPC Industry Innovation Showcase"
+  heading="Showcase your innovation."
+  intro="For KEC students and faculty to demonstrate completed or working solutions."
+>
+  <div class="hero-cards">
+    <article class="floating-card accent">
+      <span class="card-label">Who can participate</span>
+      <h2>KEC students<br />&amp; faculty</h2>
+      <p>Open to the KEC community.</p>
+    </article>
+    <article class="floating-card">
+      <span class="card-label">Participation</span>
+      <h2>Free</h2>
+      <p>Present a completed / working innovation.</p>
+    </article>
+  </div>
+
+  <section class="flow-section">
+    <div class="section-heading">
+      <span class="card-label">02 · Showcase flow</span>
+      <h2>Build → Present → Recognise</h2>
+    </div>
+
+    <div class="timeline">
+      <article class="timeline-card">
+        <span class="step">01</span>
+        <div>
+          <small>Day 2 · Setup</small>
+          <h3>Setup &amp; Preparation</h3>
+          <p>Showcase setup and preparation.</p>
+        </div>
+      </article>
+      <article class="timeline-card">
+        <span class="step">02</span>
+        <div>
+          <small>10:30 AM–12:30 PM</small>
+          <h3>Session I</h3>
+          <p>HPC Industry Innovation Showcase.</p>
+        </div>
+      </article>
+      <article class="timeline-card">
+        <span class="step">03</span>
+        <div>
+          <small>1:30–2:30 PM</small>
+          <h3>Session II</h3>
+          <p>HPC Industry Innovation Showcase.</p>
+        </div>
+      </article>
+      <article class="timeline-card">
+        <span class="step">04</span>
+        <div>
+          <small>2:30–3:15 PM</small>
+          <h3>Final Interaction &amp; Recognition</h3>
+          <p>Showcase / Jury Interaction followed by final recognition before closing.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="awards">
+    <div class="award-intro">
+      <span class="card-label">Recognition</span>
+      <h2>Showcase awards</h2>
+    </div>
+    <div class="award-cards">
+      <article class="award-card">
+        <span>Best Student Innovation</span>
+        <strong>₹5,000</strong>
+      </article>
+      <article class="award-card">
+        <span>Best Faculty Innovation</span>
+        <strong>₹5,000</strong>
+      </article>
+    </div>
+  </section>
 </ConclavePage>
+
+<style>
+  .hero-cards{display:grid;grid-template-columns:1.4fr .8fr;gap:24px;margin-bottom:100px}
+  .floating-card{background:#fbfaf7;border:1px solid #d7d5ce;border-radius:24px;padding:42px;box-shadow:0 22px 55px rgba(35,35,30,.1);transition:transform .25s ease,box-shadow .25s ease}
+  .floating-card:hover{transform:translateY(-6px);box-shadow:0 30px 65px rgba(35,35,30,.14)}
+  .floating-card.accent{background:#eef5f7;border-color:#cbdde3}
+  .card-label{display:block;color:#31708f;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+  .floating-card h2{margin:18px 0 12px;font-size:clamp(38px,5vw,68px);line-height:.95;letter-spacing:-.055em}
+  .floating-card p{margin:0}
+  .flow-section{padding:90px 0;border-top:1px solid #d7d5ce}
+  .section-heading h2,.award-intro h2{margin:16px 0 45px;font-size:clamp(42px,6vw,76px);line-height:.94;letter-spacing:-.06em}
+  .timeline{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .timeline-card{display:grid;grid-template-columns:58px 1fr;gap:22px;padding:30px;background:#fbfaf7;border:1px solid #d7d5ce;border-radius:20px;box-shadow:0 12px 32px rgba(35,35,30,.06)}
+  .step{font-size:13px;color:#8b8881;font-weight:700}
+  .timeline-card small{color:#31708f;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .timeline-card h3{margin:10px 0 8px;font-size:27px;letter-spacing:-.035em}
+  .timeline-card p{margin:0;font-size:16px}
+  .awards{padding:90px 0 20px;border-top:1px solid #d7d5ce}
+  .award-intro h2{margin-bottom:35px}
+  .award-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .award-card{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:32px;background:#fbfaf7;border:1px solid #d7d5ce;border-radius:20px;box-shadow:0 18px 45px rgba(35,35,30,.08)}
+  .award-card span{font-size:18px;font-weight:700}
+  .award-card strong{font-size:36px;letter-spacing:-.04em;color:#31708f;white-space:nowrap}
+  @media(max-width:760px){.hero-cards,.timeline,.award-cards{grid-template-columns:1fr}.floating-card{padding:30px}.flow-section,.awards{padding:65px 0}.timeline-card{grid-template-columns:38px 1fr}.award-card{align-items:flex-start;flex-direction:column}.award-card strong{font-size:32px}}
+</style>

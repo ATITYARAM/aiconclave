@@ -1,7 +1,63 @@
 ---
 import ConclavePage from '../layouts/ConclavePage.astro';
-const tracks=[['01','HPC Industry Innovation Showcase','KEC students & faculty','Free','Bring and demonstrate a completed / working solution.'],['02','HPC Industry Innovation Challenge','Registered challenge teams / external participants','Free / nominal cost','24-hour competitive challenge to solve a real industry problem.'],['03','Hands-on Workshops','General registered participants','₹300 one · ₹500 both','GPU Computing & CUDA; Generative AI & LLMs on HPC.']];
+
+const tracks = [
+  ['01', 'HPC Industry Innovation Showcase', 'KEC students & faculty', 'Free', 'Bring and demonstrate a completed / working solution.'],
+  ['02', 'HPC Industry Innovation Challenge', 'Registered challenge teams / external participants', 'Free / nominal cost', '24-hour competitive challenge to solve a real industry problem.'],
+  ['03', 'Hands-on Workshops', 'General registered participants', '₹300 one · ₹500 both', 'GPU Computing & CUDA; Generative AI & LLMs on HPC.']
+];
 ---
+
 <ConclavePage title="Tracks" eyebrow="Three Tracks" heading="Choose how you participate." intro="The conclave is organised into three distinct participation tracks. Cross-participation between tracks is not permitted.">
-  <div class="big-list">{tracks.map(([num,title,who,fee,detail])=><div class="row"><span class="num">{num}</span><div><small>{who}</small><h3>{title}</h3><p>{detail}</p></div><strong class="fee">{fee}</strong></div>)}</div>
+  <div class="track-grid">
+    {tracks.map(([num, title, who, fee, detail], i) => (
+      <article class={`track-card ${i === 1 ? 'featured' : ''}`}>
+        <div class="track-top">
+          <span class="num">{num}</span>
+          <span class="track-type">TRACK</span>
+        </div>
+
+        <div class="track-main">
+          <small>{who}</small>
+          <h2>{title}</h2>
+          <p>{detail}</p>
+        </div>
+
+        <div class="track-bottom">
+          <span>Participation</span>
+          <strong>{fee}</strong>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <section class="track-note">
+    <span class="label">One choice</span>
+    <h2>Select one track and stay focused.</h2>
+    <p>Participants register for one participation track only. Cross-participation between tracks is not permitted.</p>
+  </section>
 </ConclavePage>
+
+<style>
+  .track-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:12px}
+  .track-card{min-height:420px;padding:30px;border:1px solid #d7d5ce;border-radius:28px;background:#fbfaf7;box-shadow:0 20px 48px rgba(35,35,30,.10);display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s ease,box-shadow .25s ease}
+  .track-card:hover{transform:translateY(-9px);box-shadow:0 30px 65px rgba(35,35,30,.15)}
+  .track-card.featured{background:#eef5f7;border-color:#cbdde3;transform:translateY(-12px)}
+  .track-card.featured:hover{transform:translateY(-19px)}
+  .track-top{display:flex;justify-content:space-between;align-items:center}
+  .num{font-size:13px;font-weight:800;letter-spacing:.08em;color:#aaa69e}
+  .track-type{font-size:11px;font-weight:800;letter-spacing:.16em;color:#31708f}
+  .track-main{padding:55px 0 40px}
+  .track-main small{display:block;color:#77736c;font-size:13px;line-height:1.45}
+  .track-main h2{margin:18px 0 18px;font-size:clamp(30px,3vw,43px);line-height:1;letter-spacing:-.055em}
+  .track-main p{margin:0;max-width:360px;color:#66635d;font-size:15px;line-height:1.6}
+  .track-bottom{padding-top:20px;border-top:1px solid #d7d5ce;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+  .track-bottom span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#8b8881}
+  .track-bottom strong{font-size:16px;color:#161616;text-align:right}
+  .track-note{margin-top:70px;padding:42px 46px;border-radius:26px;background:#161616;color:#f7f6f2;box-shadow:0 22px 55px rgba(0,0,0,.12)}
+  .track-note .label{color:#a8c7d3;font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+  .track-note h2{margin:14px 0 10px;color:#f7f6f2;font-size:clamp(36px,5vw,62px);line-height:.96;letter-spacing:-.055em}
+  .track-note p{max-width:720px;margin:0;color:#c7c5bf;font-size:16px;line-height:1.6}
+  @media(max-width:900px){.track-grid{grid-template-columns:1fr 1fr}.track-card.featured{transform:none}.track-card.featured:hover{transform:translateY(-9px)}}
+  @media(max-width:620px){.track-grid{grid-template-columns:1fr;gap:17px}.track-card,.track-card.featured{min-height:360px;padding:25px;transform:none}.track-card:hover,.track-card.featured:hover{transform:translateY(-6px)}.track-main{padding:45px 0 35px}.track-note{margin-top:48px;padding:30px}}
+</style>

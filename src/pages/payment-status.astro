@@ -5,18 +5,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f6f2" />
   <title>Registration Status · HPC Innovation Conclave 2027</title>
 </head>
 <body>
-  <main class="status-card">
+  <a class="skip-link" href="#status-card">Skip to status</a>
+  <main id="status-card" class="status-card" aria-labelledby="title">
+    <div class="status-grid" aria-hidden="true"></div>
     <p class="eyebrow">HPC INNOVATION CONCLAVE 2027</p>
-    <div id="icon" class="icon">✓</div>
-    <p id="state" class="state">Checking registration…</p>
+    <div id="icon" class="icon pending">…</div>
+    <p id="state" class="state" aria-live="polite">Checking registration…</p>
     <h1 id="title">Verifying your payment.</h1>
     <p id="message">Please wait while we confirm your registration with the payment gateway.</p>
     <div id="details" class="details" hidden></div>
-    <button id="retry" hidden>Check again</button>
-    <a href="/aiconclave/" class="home">← Back to Conclave</a>
+    <div class="actions"><button id="retry" hidden>Check again</button><a href="/aiconclave/" class="home">← Back to Conclave</a></div>
   </main>
   <script>
     const SUPABASE_URL = 'https://zepdglebhboorspdqnub.supabase.co';
@@ -30,27 +32,42 @@
     const icon = document.querySelector('#icon');
     const retry = document.querySelector('#retry');
 
+    function setState(kind, label, heading, copy) {
+      icon.className = `icon ${kind}`;
+      state.textContent = label;
+      title.textContent = heading;
+      message.textContent = copy;
+    }
+
     async function checkStatus() {
-      if (!registrationId) { state.textContent = 'Missing registration'; title.textContent = 'We need your registration ID.'; message.textContent = 'Return to the registration page and try again.'; return; }
-      state.textContent = 'VERIFYING'; title.textContent = 'Checking your registration.'; message.textContent = 'We are confirming the latest payment state.'; retry.hidden = true;
+      if (!registrationId) { setState('error', 'MISSING REGISTRATION', 'We need your registration ID.', 'Return to the registration page and try again.'); retry.hidden = true; return; }
+      setState('pending', 'VERIFYING', 'Checking your registration.', 'We are confirming the latest payment state.');
+      retry.hidden = true;
       try {
         const response = await fetch(`${SUPABASE_URL}/functions/v1/payment-status`, { method: 'POST', headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ registrationId }) });
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || 'Status check failed');
         if (data.status === 'CONFIRMED') {
-          icon.textContent = '✓'; state.textContent = 'REGISTRATION CONFIRMED'; title.textContent = 'You’re in.'; message.textContent = 'Your HPC Innovation Conclave 2027 registration is confirmed.';
+          setState('success', 'REGISTRATION CONFIRMED', 'You’re in.', 'Your HPC Innovation Conclave 2027 registration is confirmed.');
           details.hidden = false; details.innerHTML = `<span>Registration ID</span><strong>${data.registrationId}</strong><span>Amount</span><strong>₹${data.amount}</strong>`;
         } else if (data.status === 'PAYMENT_FAILED') {
-          icon.textContent = '!'; state.textContent = 'PAYMENT FAILED'; title.textContent = 'Payment was not completed.'; message.textContent = 'You can return to registration and try again.'; retry.hidden = false;
+          setState('error', 'PAYMENT FAILED', 'Payment was not completed.', 'You can return to registration and try again.'); retry.hidden = false;
         } else {
-          icon.textContent = '…'; state.textContent = 'PAYMENT PROCESSING'; title.textContent = 'We’re waiting for confirmation.'; message.textContent = 'If you just completed payment, this may take a few seconds.'; retry.hidden = false;
+          setState('pending', 'PAYMENT PROCESSING', 'We’re waiting for confirmation.', 'If you just completed payment, this may take a few seconds.'); retry.hidden = false;
         }
-      } catch (error) { state.textContent = 'TEMPORARY ISSUE'; title.textContent = 'We could not verify it yet.'; message.textContent = error.message; retry.hidden = false; }
+      } catch (error) { setState('error', 'TEMPORARY ISSUE', 'We could not verify it yet.', error.message || 'Please try again.'); retry.hidden = false; }
     }
     retry.addEventListener('click', checkStatus); checkStatus();
   </script>
 </body>
 </html>
 <style>
-:global(*){box-sizing:border-box}:global(body){margin:0;min-height:100vh;display:grid;place-items:center;background:#f7f6f2;color:#171717;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px}.status-card{width:min(680px,100%);padding:54px;border:1px solid #d7d4cc;border-radius:24px;background:#fffefa;box-shadow:0 24px 80px rgba(30,30,25,.09)}.eyebrow,.state{font-size:11px;font-weight:800;letter-spacing:.14em;color:#31708f}.icon{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;margin:42px 0 25px;background:#eef6f8;color:#31708f;font-size:28px;font-weight:800}.state{margin:0}.status-card h1{font-size:clamp(42px,7vw,72px);line-height:.95;letter-spacing:-.06em;margin:12px 0 22px}.status-card p:not(.eyebrow):not(.state){color:#6d6a64;font-size:17px;line-height:1.7}.details{display:grid;grid-template-columns:1fr auto;gap:8px 20px;margin:30px 0;padding:20px;border-radius:14px;background:#f2f7f8}.details span{color:#77746e;font-size:12px}.details strong{text-align:right}.home,button{display:inline-block;margin-top:20px;padding:12px 16px;border-radius:10px;border:1px solid #d3d0c8;background:#171717;color:white;text-decoration:none;font:inherit;cursor:pointer}button{background:#31708f}.home{margin-left:8px;background:transparent;color:#171717}@media(max-width:600px){.status-card{padding:32px 24px}.status-card h1{font-size:46px}}
+:global(*){box-sizing:border-box}:global(html){scroll-behavior:smooth}:global(body){margin:0;min-height:100vh;display:grid;place-items:center;background:#f7f6f2;color:#171717;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px;opacity:0;transition:opacity .4s ease}:global(body.is-ready){opacity:1}:global(::selection){background:#2f708f;color:#fff}:global(a:focus-visible),:global(button:focus-visible){outline:3px solid #2f708f;outline-offset:3px}
+.skip-link{position:fixed;left:16px;top:12px;z-index:100;padding:9px 13px;border-radius:9px;background:#171717;color:#fff;text-decoration:none;font-size:13px;font-weight:800;transform:translateY(-160%);transition:transform .2s ease}.skip-link:focus{transform:translateY(0)}
+.status-card{position:relative;overflow:hidden;width:min(680px,100%);padding:54px;border:1px solid #d7d4cc;border-radius:24px;background:#fffefa;box-shadow:0 24px 80px rgba(30,30,25,.09)}.status-card>*:not(.status-grid){position:relative;z-index:1}.status-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(49,112,143,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(49,112,143,.055) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,transparent,black 12%,black 75%,transparent);pointer-events:none}
+.eyebrow,.state{font-size:11px;font-weight:800;letter-spacing:.14em;color:#31708f}.icon{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;margin:42px 0 25px;background:#eef6f8;color:#31708f;font-size:28px;font-weight:800;transition:transform .25s ease,background .25s ease,color .25s ease}.icon.success{background:#eaf5ee;color:#28734b}.icon.error{background:#fff0ed;color:#b34034}.icon.pending{animation:pulse 1.6s ease-in-out infinite}.state{margin:0}.status-card h1{font-size:clamp(42px,7vw,72px);line-height:.95;letter-spacing:-.06em;margin:12px 0 22px}.status-card p:not(.eyebrow):not(.state){color:#6d6a64;font-size:17px;line-height:1.7}.details{display:grid;grid-template-columns:1fr auto;gap:8px 20px;margin:30px 0;padding:20px;border-radius:14px;background:#f2f7f8}.details span{color:#77746e;font-size:12px}.details strong{text-align:right}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.home,button{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:10px;border:1px solid #d3d0c8;background:#171717;color:white;text-decoration:none;font:inherit;cursor:pointer;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}.home:hover,button:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(35,35,30,.10)}button{background:#31708f;border-color:#31708f}.home{background:transparent;color:#171717}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.75}50%{transform:scale(1.06);opacity:1}}
+@media(max-width:600px){:global(body){padding:15px}.status-card{padding:32px 24px}.status-card h1{font-size:46px}.status-grid{background-size:30px 30px}.actions>*{flex:1}.icon{margin-top:32px}}
+@media(prefers-reduced-motion:reduce){:global(html){scroll-behavior:auto}:global(body),.icon,.skip-link,.home,button{transition:none}.icon.pending{animation:none}.status-grid{display:none}}
 </style>
+<script>requestAnimationFrame(()=>document.body.classList.add('is-ready'));</script>

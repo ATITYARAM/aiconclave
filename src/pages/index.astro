@@ -182,9 +182,9 @@ const highlights = [
           <div><b>07</b><span>Workshops cost ₹300 for one workshop or ₹500 for both; participants should bring their own laptop.</span></div>
           <div><b>08</b><span>Lunch is provided only for participants of the 24-hour Innovation Challenge.</span></div>
         </div>
-        <div class="countdown-wrap"><span id="countdown">30</span><small>seconds remaining before continuing</small></div>
+        <div class="countdown-wrap"><span id="countdown">15</span><small>seconds remaining before continuing</small></div>
         <button id="rules-continue" class="rules-continue" type="button" disabled>Continue to registration <span>→</span></button>
-        <p id="wait-note" class="wait-note">The registration button will unlock after the 30-second review period.</p>
+        <p id="wait-note" class="wait-note">The registration button will unlock after the 15-second review period.</p>
       </section>
     </div>
 
@@ -206,9 +206,9 @@ const highlights = [
         modal?.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
         continueButton.disabled = true;
-        countdown.textContent = '30';
+        countdown.textContent = '15';
         modal.classList.remove('ready');
-        let remaining = 30;
+        let remaining = 15;
         clearInterval(timer);
         timer = setInterval(() => {
           remaining -= 1;

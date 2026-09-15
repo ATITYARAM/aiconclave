@@ -1,0 +1,56 @@
+---
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Status · HPC Innovation Conclave 2027</title>
+</head>
+<body>
+  <main class="status-card">
+    <p class="eyebrow">HPC INNOVATION CONCLAVE 2027</p>
+    <div id="icon" class="icon">✓</div>
+    <p id="state" class="state">Checking registration…</p>
+    <h1 id="title">Verifying your payment.</h1>
+    <p id="message">Please wait while we confirm your registration with the payment gateway.</p>
+    <div id="details" class="details" hidden></div>
+    <button id="retry" hidden>Check again</button>
+    <a href="/aiconclave/" class="home">← Back to Conclave</a>
+  </main>
+  <script>
+    const SUPABASE_URL = 'https://zepdglebhboorspdqnub.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_Z0J-eFYKQSkGA7XOw5FbWw_gM9OVd2U';
+    const params = new URLSearchParams(location.search);
+    const registrationId = params.get('registration');
+    const state = document.querySelector('#state');
+    const title = document.querySelector('#title');
+    const message = document.querySelector('#message');
+    const details = document.querySelector('#details');
+    const icon = document.querySelector('#icon');
+    const retry = document.querySelector('#retry');
+
+    async function checkStatus() {
+      if (!registrationId) { state.textContent = 'Missing registration'; title.textContent = 'We need your registration ID.'; message.textContent = 'Return to the registration page and try again.'; return; }
+      state.textContent = 'VERIFYING'; title.textContent = 'Checking your registration.'; message.textContent = 'We are confirming the latest payment state.'; retry.hidden = true;
+      try {
+        const response = await fetch(`${SUPABASE_URL}/functions/v1/payment-status`, { method: 'POST', headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ registrationId }) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Status check failed');
+        if (data.status === 'CONFIRMED') {
+          icon.textContent = '✓'; state.textContent = 'REGISTRATION CONFIRMED'; title.textContent = 'You’re in.'; message.textContent = 'Your HPC Innovation Conclave 2027 registration is confirmed.';
+          details.hidden = false; details.innerHTML = `<span>Registration ID</span><strong>${data.registrationId}</strong><span>Amount</span><strong>₹${data.amount}</strong>`;
+        } else if (data.status === 'PAYMENT_FAILED') {
+          icon.textContent = '!'; state.textContent = 'PAYMENT FAILED'; title.textContent = 'Payment was not completed.'; message.textContent = 'You can return to registration and try again.'; retry.hidden = false;
+        } else {
+          icon.textContent = '…'; state.textContent = 'PAYMENT PROCESSING'; title.textContent = 'We’re waiting for confirmation.'; message.textContent = 'If you just completed payment, this may take a few seconds.'; retry.hidden = false;
+        }
+      } catch (error) { state.textContent = 'TEMPORARY ISSUE'; title.textContent = 'We could not verify it yet.'; message.textContent = error.message; retry.hidden = false; }
+    }
+    retry.addEventListener('click', checkStatus); checkStatus();
+  </script>
+</body>
+</html>
+<style>
+:global(*){box-sizing:border-box}:global(body){margin:0;min-height:100vh;display:grid;place-items:center;background:#f7f6f2;color:#171717;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px}.status-card{width:min(680px,100%);padding:54px;border:1px solid #d7d4cc;border-radius:24px;background:#fffefa;box-shadow:0 24px 80px rgba(30,30,25,.09)}.eyebrow,.state{font-size:11px;font-weight:800;letter-spacing:.14em;color:#31708f}.icon{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;margin:42px 0 25px;background:#eef6f8;color:#31708f;font-size:28px;font-weight:800}.state{margin:0}.status-card h1{font-size:clamp(42px,7vw,72px);line-height:.95;letter-spacing:-.06em;margin:12px 0 22px}.status-card p:not(.eyebrow):not(.state){color:#6d6a64;font-size:17px;line-height:1.7}.details{display:grid;grid-template-columns:1fr auto;gap:8px 20px;margin:30px 0;padding:20px;border-radius:14px;background:#f2f7f8}.details span{color:#77746e;font-size:12px}.details strong{text-align:right}.home,button{display:inline-block;margin-top:20px;padding:12px 16px;border-radius:10px;border:1px solid #d3d0c8;background:#171717;color:white;text-decoration:none;font:inherit;cursor:pointer}button{background:#31708f}.home{margin-left:8px;background:transparent;color:#171717}@media(max-width:600px){.status-card{padding:32px 24px}.status-card h1{font-size:46px}}
+</style>
